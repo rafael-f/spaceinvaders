@@ -1,4 +1,4 @@
-#pragma once
-#define debuggingOnConsole
-
-class DevelopState {};
+//#pragma once
+//#define debuggingOnConsole
+//
+//class DevelopState {};
