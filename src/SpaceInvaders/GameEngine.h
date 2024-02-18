@@ -1,6 +1,7 @@
 #pragma once
 //#include "ScreenManager.h"
 //#include "SoundEngine.h"
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "Vector2f.h"
 

@@ -16,6 +16,12 @@ GameEngine::GameEngine()
 	glfwMaximizeWindow(m_Window);
 	glfwMakeContextCurrent(m_Window);
 
+	if (glewInit() != GLEW_OK)
+	{
+		glfwTerminate();
+		std::exit(-1);
+	}
+
 	//m_ScreenManager = unique_ptr<ScreenManager>(new ScreenManager(Vector2i(m_Resolution.x, m_Resolution.y)));
 }
 
