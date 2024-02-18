@@ -149,6 +149,7 @@
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="UIPanel.h" />
     <ClInclude Include="UpdateComponent.h" />
+    <ClInclude Include="Vector2f.h" />
     <ClInclude Include="WorldState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
