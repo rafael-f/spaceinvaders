@@ -1,6 +1,7 @@
 #include "GameEngine.h"
+#include <Windows.h>
 
-int main()
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	if (!glfwInit())
 	{
