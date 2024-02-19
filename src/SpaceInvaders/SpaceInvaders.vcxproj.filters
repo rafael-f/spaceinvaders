@@ -26,6 +26,9 @@
     <Filter Include="Source Files\Engine\Utils">
       <UniqueIdentifier>{2d3ad2eb-0a36-48ab-a019-8d459118ae93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Shaders">
+      <UniqueIdentifier>{04b2fda2-5fa3-46b6-a206-a1ac0abac083}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h">
@@ -243,5 +246,13 @@
     <ClCompile Include="PhysicsEnginePlayMode.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="PixelShader.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </Text>
+    <Text Include="VertexShader.hlsl">
+      <Filter>Source Files\Shaders</Filter>
+    </Text>
   </ItemGroup>
 </Project>
