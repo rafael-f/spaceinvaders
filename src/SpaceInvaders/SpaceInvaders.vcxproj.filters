@@ -29,6 +29,9 @@
     <Filter Include="Source Files\Shaders">
       <UniqueIdentifier>{04b2fda2-5fa3-46b6-a206-a1ac0abac083}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Renderer">
+      <UniqueIdentifier>{78c56cc7-4a04-49b5-b1c6-c39bfa63248b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h">
@@ -151,6 +154,15 @@
     <ClInclude Include="Vector2f.h">
       <Filter>Source Files\Engine\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Source Files\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Source Files\Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Source Files\Engine\Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceInvaders.cpp">
@@ -245,6 +257,15 @@
     </ClCompile>
     <ClCompile Include="PhysicsEnginePlayMode.cpp">
       <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Source Files\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Source Files\Engine\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -91,6 +91,7 @@
     <ClCompile Include="GameOverUIPanel.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameUIPanel.cpp" />
+    <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InvaderUpdate.cpp" />
     <ClCompile Include="LevelManager.cpp" />
@@ -99,6 +100,7 @@
     <ClCompile Include="PlayerUpdate.cpp" />
     <ClCompile Include="PlayModeObjectLoader.cpp" />
     <ClCompile Include="RectColliderComponent.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="SelectInputHandler.cpp" />
@@ -109,6 +111,7 @@
     <ClCompile Include="StandardGraphicsComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="UIPanel.cpp" />
+    <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h" />
@@ -130,6 +133,7 @@
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GameUIPanel.h" />
     <ClInclude Include="GraphicsComponent.h" />
+    <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="InvaderUpdateComponent.h" />
     <ClInclude Include="LevelManager.h" />
@@ -138,6 +142,7 @@
     <ClInclude Include="PlayerUpdateComponent.h" />
     <ClInclude Include="PlayModeObjectLoader.h" />
     <ClInclude Include="RectColliderComponent.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="ScreenManagerRemoteControl.h" />
@@ -150,6 +155,7 @@
     <ClInclude Include="UIPanel.h" />
     <ClInclude Include="UpdateComponent.h" />
     <ClInclude Include="Vector2f.h" />
+    <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="WorldState.h" />
   </ItemGroup>
   <ItemGroup>

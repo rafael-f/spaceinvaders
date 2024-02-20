@@ -3,27 +3,9 @@
 #include <cstdlib>
 #include <string>
 #include <fstream>
-
-#define ASSERT(x) if(!(x)) __debugbreak();
-#define GLCall(x) GLClearError();\
-	x;\
-	ASSERT(GLLogCall(#x, __FILE__, __LINE__))
-
-static void GLClearError()
-{
-	while (glGetError() != GL_NO_ERROR);
-}
-
-static bool GLLogCall(const char* function, const char* file, int line)
-{
-	while (GLenum error = glGetError())
-	{
-		//todo cout error function file line
-		return false;
-	}
-
-	return true;
-}
+#include "Renderer.h"
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
 
 static unsigned int CompileShader(unsigned int type, const std::string& source)
 {
@@ -78,6 +60,7 @@ GameEngine::GameEngine()
 
 	glfwMaximizeWindow(m_Window);
 	glfwMakeContextCurrent(m_Window);
+	glfwSwapInterval(1);
 
 	if (glewInit() != GLEW_OK)
 	{
@@ -113,51 +96,48 @@ std::string ReadFile(const std::string& fileName)
 void GameEngine::run()
 {
 	const int size = 6;
-
-	// TODO remove opengl learning
-	float positions[] = {
-		-.5f, -.5f,
-		.5f, -.5f,
-		.5f, .5f,
-		-.5f, .5f
-	};
-
-	unsigned int indices[] = {
-		0, 1, 2,
-		2, 3, 0
-	};
-
-	unsigned int buffer;
-	glGenBuffers(1, &buffer);
-	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	glBufferData(GL_ARRAY_BUFFER, 12 * sizeof(float), positions, GL_STATIC_DRAW);
-
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
-	unsigned int ibo;
-	glGenBuffers(1, &ibo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
-
-	std::string vertexShader = ReadFile("VertexShader.hlsl");
-	std::string fragmentShader = ReadFile("PixelShader.hlsl");
-
-	unsigned int shader = CreateShader(vertexShader, fragmentShader);
-	glUseProgram(shader);
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	while (!glfwWindowShouldClose(m_Window))
 	{
-	//	m_DT = m_Clock.restart();
-	//	m_FPS = m_DT.asSeconds();
-	//	handleInput();
-	//	update();
-		draw();
-	}
+		// TODO remove opengl learning
+		float positions[] = {
+			-.5f, -.5f,
+			.5f, -.5f,
+			.5f, .5f,
+			-.5f, .5f
+		};
 
-	glDeleteProgram(shader);
+		unsigned int indices[] = {
+			0, 1, 2,
+			2, 3, 0
+		};
+
+		VertexBuffer vb(positions, 8 * sizeof(float));
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+
+		IndexBuffer ib(indices, 6);
+
+		std::string vertexShader = ReadFile("VertexShader.hlsl");
+		std::string fragmentShader = ReadFile("PixelShader.hlsl");
+
+		unsigned int shader = CreateShader(vertexShader, fragmentShader);
+		glUseProgram(shader);
+
+		GLCall(int location = glGetUniformLocation(shader, "u_Color"));
+		ASSERT(location != -1);
+		GLCall(glUniform4f(location, 0.2f, 0.3f, 0.8f, 1.0f));
+
+		while (!glfwWindowShouldClose(m_Window))
+		{
+			//	m_DT = m_Clock.restart();
+			//	m_FPS = m_DT.asSeconds();
+			//	handleInput();
+			//	update();
+			draw();
+		}
+
+		glDeleteProgram(shader);
+	}
 
 	glfwTerminate();
 }
