@@ -1,9 +1,10 @@
 #pragma once
 //#include "ScreenManager.h"
 //#include "SoundEngine.h"
+#include <Windows.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "Vector2f.h"
+#include "Vector2i.h"
 
 class GameEngine
 {
@@ -18,13 +19,13 @@ private:
 
 	float m_FPS = 0;
 
-	Vector2f m_Resolution;
+	Vector2i m_Resolution;
 
 	void handleInput();
 
 	void update();
 
-	void draw();
+	void draw(const unsigned int& shader, const unsigned int& location, const float& r);
 
 public:
 	//SoundEngine m_SoundEngine;

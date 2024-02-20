@@ -1,11 +1,11 @@
 #include "GameEngine.h"
-#include <Windows.h>
 #include <cstdlib>
 #include <string>
 #include <fstream>
 #include "Renderer.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
+#include "VertexArray.h"
 
 static unsigned int CompileShader(unsigned int type, const std::string& source)
 {
@@ -110,30 +110,67 @@ void GameEngine::run()
 			2, 3, 0
 		};
 
+		unsigned int vao;
+		GLCall(glGenVertexArrays(1, &vao));
+		GLCall(glBindVertexArray(vao));
+
+		VertexArray(va);
 		VertexBuffer vb(positions, 8 * sizeof(float));
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+		VertexBufferLayout layout;
+		layout.Push<float>(2);
+		va.AddBuffer(vb, layout);
 
 		IndexBuffer ib(indices, 6);
 
 		std::string vertexShader = ReadFile("VertexShader.hlsl");
 		std::string fragmentShader = ReadFile("PixelShader.hlsl");
-
 		unsigned int shader = CreateShader(vertexShader, fragmentShader);
-		glUseProgram(shader);
+		GLCall(glUseProgram(shader));
 
 		GLCall(int location = glGetUniformLocation(shader, "u_Color"));
 		ASSERT(location != -1);
-		GLCall(glUniform4f(location, 0.2f, 0.3f, 0.8f, 1.0f));
+		GLCall(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));
+		
+		GLCall(glBindVertexArray(0));
+		GLCall(glUseProgram(0));
+		GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+		GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 
+		float r = 0;
+		float increment = 0.05f;
 		while (!glfwWindowShouldClose(m_Window))
 		{
 			//	m_DT = m_Clock.restart();
 			//	m_FPS = m_DT.asSeconds();
 			//	handleInput();
 			//	update();
-			draw();
+			//draw(shader, location, r);
+
+			glClear(GL_COLOR_BUFFER_BIT);
+
+			glUseProgram(shader);
+			GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
+
+			GLCall(glBindVertexArray(vao));
+			va.Bind();
+			ib.Bind();
+
+			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+
+			if (r > 1.0f)
+			{
+				increment = -0.05f;
+			}
+			else if (r < 0.0f)
+			{
+				increment = 0.05f;
+			}
+
+			r += increment;
+
+			glfwSwapBuffers(m_Window);
+			glfwPollEvents();
 		}
 
 		glDeleteProgram(shader);
@@ -152,12 +189,17 @@ void GameEngine::update()
 	//m_ScreenManager->update(m_FPS);
 }
 
-void GameEngine::draw()
+void GameEngine::draw(const unsigned int& shader, const unsigned int& location, const float& r)
 {
 	/* Render here */
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+	glUseProgram(shader);
+	GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
+
+	//GLCall(glBindVertexArray(vao));
+	//va.Bind();
+	//ib.Bind();
 
 	/* Swap front and back buffers */
 	glfwSwapBuffers(m_Window);

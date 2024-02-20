@@ -111,6 +111,7 @@
     <ClCompile Include="StandardGraphicsComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="UIPanel.cpp" />
+    <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,7 +156,10 @@
     <ClInclude Include="UIPanel.h" />
     <ClInclude Include="UpdateComponent.h" />
     <ClInclude Include="Vector2f.h" />
+    <ClInclude Include="Vector2i.h" />
+    <ClInclude Include="VertexArray.h" />
     <ClInclude Include="VertexBuffer.h" />
+    <ClInclude Include="VertexBufferLayout.h" />
     <ClInclude Include="WorldState.h" />
   </ItemGroup>
   <ItemGroup>
