@@ -9,6 +9,8 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 GameEngine::GameEngine()
 {
@@ -68,6 +70,8 @@ void GameEngine::run()
 
 		IndexBuffer ib(indices, 6);
 
+		glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+
 		ShaderProgram shader;
 		shader.AddShader(GL_VERTEX_SHADER, "VertexShader.hlsl");
 		shader.AddShader(GL_FRAGMENT_SHADER, "PixelShader.hlsl");
@@ -75,6 +79,7 @@ void GameEngine::run()
 		shader.Bind();
 
 		shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
+		shader.SetUniformMat4f("u_MVP", proj);
 				
 		Texture texture("graphics/background.png");
 		int textureSlot = 0;
