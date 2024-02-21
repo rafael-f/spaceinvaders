@@ -8,9 +8,12 @@
 #include "VertexBufferLayout.h"
 #include <cstdlib>
 #include <fstream>
-#include <string>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include "IMGUI/imgui.h"
+#include "IMGUI/imgui_impl_glfw.h"
+#include "IMGUI/imgui_impl_opengl3.h"
+#include <string>
 
 GameEngine::GameEngine()
 {
@@ -93,8 +96,17 @@ void GameEngine::run()
 
 		Renderer renderer;
 
+		ImGui::CreateContext();
+		ImGui::StyleColorsDark();
+		ImGui_ImplGlfw_InitForOpenGL(m_Window, true);
+		const char* glsl_version = "#version 130";
+		ImGui_ImplOpenGL3_Init(glsl_version);
+
 		float r = 0;
 		float increment = 0.05f;
+
+		bool show_demo_window = true;
+
 		while (!glfwWindowShouldClose(m_Window))
 		{
 			//	m_DT = m_Clock.restart();
@@ -104,6 +116,10 @@ void GameEngine::run()
 			//draw(shader, location, r);
 
 			renderer.Clear();
+
+			ImGui_ImplOpenGL3_NewFrame();
+			ImGui_ImplGlfw_NewFrame();
+			ImGui::NewFrame();
 
 			shader.Bind();
 			shader.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f);
@@ -121,10 +137,24 @@ void GameEngine::run()
 
 			r += increment;
 
+			ImGui::ShowDemoWindow(&show_demo_window);
+
+			ImGui::Render();
+			//int display_w, display_h;
+			//glfwGetFramebufferSize(window, &display_w, &display_h);
+			//glViewport(0, 0, display_w, display_h);
+			//glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
+			//glClear(GL_COLOR_BUFFER_BIT);
+			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 			glfwSwapBuffers(m_Window);
 			glfwPollEvents();
 		}
 	}
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 
 	glfwTerminate();
 }
