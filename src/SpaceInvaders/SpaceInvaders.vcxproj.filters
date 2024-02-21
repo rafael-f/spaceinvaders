@@ -178,6 +178,9 @@
     <ClInclude Include="ShaderProgram.h">
       <Filter>Source Files\Engine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Source Files\Engine\Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceInvaders.cpp">
@@ -289,6 +292,12 @@
       <Filter>Source Files\Engine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Source Files\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Source Files\Engine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
       <Filter>Source Files\Engine\Renderer</Filter>
     </ClCompile>
   </ItemGroup>

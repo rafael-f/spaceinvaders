@@ -1,16 +1,14 @@
 #include "GameEngine.h"
-
-#include <cstdlib>
-#include <string>
-#include <fstream>
-
-#include "Renderer.h"
-
-#include "VertexBuffer.h"
 #include "IndexBuffer.h"
-#include "VertexArray.h"
+#include "Renderer.h"
 #include "ShaderProgram.h"
+#include "Texture.h"
+#include "VertexArray.h"
+#include "VertexBuffer.h"
 #include "VertexBufferLayout.h"
+#include <cstdlib>
+#include <fstream>
+#include <string>
 
 GameEngine::GameEngine()
 {
@@ -42,10 +40,10 @@ void GameEngine::run()
 	{
 		// TODO remove opengl learning
 		float positions[] = {
-			-.5f, -.5f,
-			.5f, -.5f,
-			.5f, .5f,
-			-.5f, .5f
+			-0.5f, -0.5f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 1.0f
 		};
 
 		unsigned int indices[] = {
@@ -53,14 +51,18 @@ void GameEngine::run()
 			2, 3, 0
 		};
 
+		GLCall(glEnable(GL_BLEND));
+		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+
 		unsigned int vao;
 		GLCall(glGenVertexArrays(1, &vao));
 		GLCall(glBindVertexArray(vao));
 
 		VertexArray(va);
-		VertexBuffer vb(positions, 8 * sizeof(float));
+		VertexBuffer vb(positions, 4 * 4 * sizeof(float));
 
 		VertexBufferLayout layout;
+		layout.Push<float>(2);
 		layout.Push<float>(2);
 		va.AddBuffer(vb, layout);
 
@@ -74,6 +76,11 @@ void GameEngine::run()
 
 		shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 				
+		Texture texture("graphics/background.png");
+		int textureSlot = 0;
+		texture.Bind(textureSlot);
+		shader.SetUniform1i("u_Texture", textureSlot);
+
 		va.Unbind();
 		shader.Unbind();
 		vb.Unbind();
