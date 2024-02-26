@@ -1,4 +1,7 @@
 #include "GameEngine.h"
+#include "IMGUI/imgui.h"
+#include "IMGUI/imgui_impl_glfw.h"
+#include "IMGUI/imgui_impl_opengl3.h"
 #include "IndexBuffer.h"
 #include "Renderer.h"
 #include "ShaderProgram.h"
@@ -10,16 +13,14 @@
 #include <fstream>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include "IMGUI/imgui.h"
-#include "IMGUI/imgui_impl_glfw.h"
-#include "IMGUI/imgui_impl_opengl3.h"
 #include <string>
 
 GameEngine::GameEngine()
 {
 	m_Resolution.x = GetSystemMetrics(SM_CXSCREEN);
 	m_Resolution.y = GetSystemMetrics(SM_CYSCREEN);
-	m_Window = glfwCreateWindow(m_Resolution.x, m_Resolution.y, "Space Invaders++", NULL, NULL);
+	m_Window = glfwCreateWindow(m_Resolution.x, m_Resolution.y, "Space Invaders++", nullptr, nullptr);
+	
 	if (!m_Window)
 	{
 		glfwTerminate();
@@ -36,7 +37,7 @@ GameEngine::GameEngine()
 		std::exit(-1);
 	}
 
-	//m_ScreenManager = unique_ptr<ScreenManager>(new ScreenManager(Vector2i(m_Resolution.x, m_Resolution.y)));
+	m_ScreenManager = unique_ptr<ScreenManager>(new ScreenManager(Vector2i(m_Resolution.x, m_Resolution.y)));
 }
 
 void GameEngine::run()
@@ -83,7 +84,7 @@ void GameEngine::run()
 
 		shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 		shader.SetUniformMat4f("u_MVP", proj);
-				
+
 		Texture texture("graphics/background.png");
 		int textureSlot = 0;
 		texture.Bind(textureSlot);

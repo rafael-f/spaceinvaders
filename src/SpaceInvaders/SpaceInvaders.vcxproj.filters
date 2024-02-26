@@ -32,6 +32,9 @@
     <Filter Include="Source Files\Engine\Renderer">
       <UniqueIdentifier>{78c56cc7-4a04-49b5-b1c6-c39bfa63248b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\IMGUI">
+      <UniqueIdentifier>{db5e4776-5d3c-41e0-b059-7a620da3651c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h">
@@ -181,14 +184,30 @@
     <ClInclude Include="Texture.h">
       <Filter>Source Files\Engine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="IMGUI\imconfig.h" />
-    <ClInclude Include="IMGUI\imgui.h" />
-    <ClInclude Include="IMGUI\imgui_impl_glfw.h" />
-    <ClInclude Include="IMGUI\imgui_impl_opengl3.h" />
-    <ClInclude Include="IMGUI\imgui_internal.h" />
-    <ClInclude Include="IMGUI\imstb_rectpack.h" />
-    <ClInclude Include="IMGUI\imstb_textedit.h" />
-    <ClInclude Include="IMGUI\imstb_truetype.h" />
+    <ClInclude Include="IMGUI\imconfig.h">
+      <Filter>Source Files\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui.h">
+      <Filter>Source Files\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_impl_glfw.h">
+      <Filter>Source Files\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_impl_opengl3.h">
+      <Filter>Source Files\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imgui_internal.h">
+      <Filter>Source Files\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imstb_rectpack.h">
+      <Filter>Source Files\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imstb_textedit.h">
+      <Filter>Source Files\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGUI\imstb_truetype.h">
+      <Filter>Source Files\IMGUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceInvaders.cpp">
@@ -309,25 +328,25 @@
       <Filter>Source Files\Engine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="IMGUI\imgui.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="IMGUI\imgui_demo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="IMGUI\imgui_draw.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="IMGUI\imgui_impl_glfw.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="IMGUI\imgui_impl_opengl3.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="IMGUI\imgui_tables.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\IMGUI</Filter>
     </ClCompile>
     <ClCompile Include="IMGUI\imgui_widgets.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\IMGUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

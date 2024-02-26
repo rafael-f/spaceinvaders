@@ -1,5 +1,5 @@
 #pragma once
-//#include "ScreenManager.h"
+#include "ScreenManager.h"
 //#include "SoundEngine.h"
 #include <Windows.h>
 #include <GL/glew.h>
@@ -15,7 +15,7 @@ private:
 
 	GLFWwindow* m_Window;
 
-	//unique_ptr<ScreenManager> m_ScreenManager;
+	unique_ptr<ScreenManager> m_ScreenManager;
 
 	float m_FPS = 0;
 
