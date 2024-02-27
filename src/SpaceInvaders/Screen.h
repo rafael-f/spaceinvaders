@@ -23,5 +23,5 @@ public:
 	void handleInput(GLFWwindow& window);
 
 	virtual ~Screen() = default;
-	//View m_View;
+	View m_View;
 };

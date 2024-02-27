@@ -124,6 +124,7 @@
     <ClCompile Include="UIPanel.cpp" />
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
+    <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="VertexBufferLayout.h" />
+    <ClInclude Include="View.h" />
     <ClInclude Include="WorldState.h" />
   </ItemGroup>
   <ItemGroup>

@@ -35,6 +35,9 @@
     <Filter Include="Source Files\IMGUI">
       <UniqueIdentifier>{db5e4776-5d3c-41e0-b059-7a620da3651c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\NewFilter1">
+      <UniqueIdentifier>{d0f4f4ab-12bf-446b-97a1-3cf5a9a7996d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h">
@@ -208,6 +211,9 @@
     <ClInclude Include="IMGUI\imstb_truetype.h">
       <Filter>Source Files\IMGUI</Filter>
     </ClInclude>
+    <ClInclude Include="View.h">
+      <Filter>Source Files\Engine\NewFilter1</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceInvaders.cpp">
@@ -347,6 +353,9 @@
     </ClCompile>
     <ClCompile Include="IMGUI\imgui_widgets.cpp">
       <Filter>Source Files\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="View.cpp">
+      <Filter>Source Files\Engine\NewFilter1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
