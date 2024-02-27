@@ -3,20 +3,21 @@
 #include "GameObjectSharer.h"
 #include "TransformComponent.h"
 #include "Vector2f.h"
+#include "Window.h"
 #include <iostream>
 #include <string>
 
 class GraphicsComponent : public Component
 {
 private:
-	string m_Type = "graphics";
+	std::string m_Type = "graphics";
 	bool m_Enabled = false;
 
 public:
-	virtual void draw(GLFWwindow& window, shared_ptr<TransformComponent> t) = 0;
-	virtual void initializeGraphics(string bitmapName, Vector2f objectSize) = 0;
+	virtual void draw(Window& window, std::shared_ptr<TransformComponent> t) = 0;
+	virtual void initializeGraphics(std::string bitmapName, Vector2f objectSize) = 0;
 
-	string Component::getType()
+	std::string Component::getType()
 	{
 		return m_Type;
 	}

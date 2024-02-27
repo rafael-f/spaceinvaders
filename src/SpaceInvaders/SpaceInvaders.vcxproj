@@ -82,6 +82,9 @@
     <ClCompile Include="BlueprintObjectParser.cpp" />
     <ClCompile Include="BulletUpdate.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Color.cpp" />
+    <ClCompile Include="FloatRect.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameInputHandler.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -101,11 +104,13 @@
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InvaderUpdate.cpp" />
+    <ClCompile Include="Joystick.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="ObjectTags.cpp" />
     <ClCompile Include="PhysicsEnginePlayMode.cpp" />
     <ClCompile Include="PlayerUpdate.cpp" />
     <ClCompile Include="PlayModeObjectLoader.cpp" />
+    <ClCompile Include="RectangleShape.cpp" />
     <ClCompile Include="RectColliderComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Screen.cpp" />
@@ -115,16 +120,21 @@
     <ClCompile Include="SelectUIPanel.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="SoundBuffer.cpp" />
     <ClCompile Include="SoundEngine.cpp" />
     <ClCompile Include="SpaceInvaders.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StandardGraphicsComponent.cpp" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="UIPanel.cpp" />
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="View.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h" />
@@ -133,8 +143,12 @@
     <ClInclude Include="BulletUpdateComponent.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ColliderComponent.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="DevelopState.h" />
+    <ClInclude Include="Drawable.h" />
+    <ClInclude Include="FloatRect.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameInputHandler.h" />
     <ClInclude Include="GameObject.h" />
@@ -157,13 +171,16 @@
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="InvaderUpdateComponent.h" />
+    <ClInclude Include="Joystick.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="ObjectTags.h" />
     <ClInclude Include="PhysicsEnginePlayMode.h" />
     <ClInclude Include="PlayerUpdateComponent.h" />
     <ClInclude Include="PlayModeObjectLoader.h" />
+    <ClInclude Include="RectangleShape.h" />
     <ClInclude Include="RectColliderComponent.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RenderWindow.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="ScreenManagerRemoteControl.h" />
@@ -172,8 +189,12 @@
     <ClInclude Include="SelectUIPanel.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
+    <ClInclude Include="Sound.h" />
+    <ClInclude Include="SoundBuffer.h" />
     <ClInclude Include="SoundEngine.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="StandardGraphicsComponent.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="UIPanel.h" />
@@ -184,6 +205,7 @@
     <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="VertexBufferLayout.h" />
     <ClInclude Include="View.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="WorldState.h" />
   </ItemGroup>
   <ItemGroup>
