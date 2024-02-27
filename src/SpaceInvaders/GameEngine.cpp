@@ -37,7 +37,7 @@ GameEngine::GameEngine()
 		std::exit(-1);
 	}
 
-	m_ScreenManager = unique_ptr<ScreenManager>(new ScreenManager(Vector2i(m_Resolution.x, m_Resolution.y)));
+	m_ScreenManager = std::unique_ptr<ScreenManager>(new ScreenManager(Vector2i(m_Resolution.x, m_Resolution.y)));
 }
 
 void GameEngine::run()

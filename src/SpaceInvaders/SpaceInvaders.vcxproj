@@ -113,6 +113,7 @@
     <ClCompile Include="RectangleShape.cpp" />
     <ClCompile Include="RectColliderComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RenderWindow.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="SelectInputHandler.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="DevelopState.h" />
     <ClInclude Include="Drawable.h" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="FloatRect.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GameEngine.h" />

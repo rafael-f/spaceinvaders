@@ -19,7 +19,7 @@ void RectColliderComponent::setOrMoveCollider(float x, float y, float width, flo
 	m_Collider.w = height;
 }
 
-glm::vec4& RectColliderComponent::getColliderRectF()
+FloatRect& RectColliderComponent::getColliderRectF()
 {
 	return m_Collider;
 }

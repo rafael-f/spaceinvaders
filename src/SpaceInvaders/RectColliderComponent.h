@@ -1,12 +1,12 @@
 #pragma once
 #include "ColliderComponent.h"
-#include <glm/glm.hpp>
+#include "FloatRect.h"
 
 class RectColliderComponent : public ColliderComponent
 {
 private:
 	std::string m_SpecificType = "rect";
-	glm::vec4 m_Collider;
+	FloatRect m_Collider;
 	std::string m_Tag = "";
 
 public:
@@ -16,7 +16,7 @@ public:
 
 	void setOrMoveCollider(float x, float y, float width, float height);
 
-	glm::vec4& getColliderRectF();
+	FloatRect& getColliderRectF();
 
 	std::string getSpecificType() override
 	{

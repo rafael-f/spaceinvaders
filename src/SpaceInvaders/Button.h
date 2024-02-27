@@ -4,7 +4,7 @@
 #include "RectangleShape.h"
 #include "Text.h"
 #include "Vector2f.h"
-#include "Window.h"
+#include "RenderWindow.h"
 #include <string>
 
 class Button
@@ -21,5 +21,5 @@ public:
 
 	FloatRect m_Collider;
 
-	void draw(Window& window) const;
+	void draw(RenderWindow& window) const;
 };

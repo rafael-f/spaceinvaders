@@ -6,6 +6,7 @@
 #include "SelectScreen.h"
 #include <iostream>
 #include <map>
+#include "Screen.h"
 
 class ScreenManager : public ScreenManagerRemoteControl
 {
@@ -19,11 +20,11 @@ protected:
 public:
 	BitmapStore m_BS;
 
-	ScreenManager(Vector2i res);
+	explicit ScreenManager(Vector2i res);
 
 	void update(float fps);
-	void draw(GLFWwindow& window);
-	void handleInput(GLFWwindow& window);
+	void draw(RenderWindow& window);
+	void handleInput(RenderWindow& window);
 
 	void ScreenManagerRemoteControl::SwitchScreens(std::string screenToSwitchTo)
 	{
@@ -39,7 +40,7 @@ public:
 		SwitchScreens("Game");
 	}
 
-	std::vector<GameObject>&	ScreenManagerRemoteControl::getGameObjects()
+	std::vector<GameObject>& ScreenManagerRemoteControl::getGameObjects()
 	{
 		return m_LevelManager.getGameObjects();
 	}

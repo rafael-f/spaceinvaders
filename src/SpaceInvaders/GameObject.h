@@ -1,9 +1,10 @@
 #pragma once
 #include "Component.h"
+#include "FloatRect.h"
 #include "GameObjectSharer.h"
 #include "GraphicsComponent.h"
+#include "RenderWindow.h"
 #include "UpdateComponent.h"
-#include <glm/glm.hpp>
 #include <memory>
 #include <string>
 #include <vector>
@@ -29,7 +30,7 @@ private:
 public:
 	void update(float fps);
 
-	void draw(GLFWwindow& window);
+	void draw(RenderWindow& window);
 
 	void addComponent(std::shared_ptr<Component> component);
 
@@ -48,7 +49,7 @@ public:
 	// Slow only use in init and start
 	std::shared_ptr<Component> getComponentByTypeAndSpecificType(std::string type, std::string specificType);
 
-	glm::vec4& getEncompassingRectCollider();
+	FloatRect& getEncompassingRectCollider();
 
 	bool hasCollider();
 

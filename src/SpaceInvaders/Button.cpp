@@ -18,7 +18,7 @@ Button::Button(Vector2f position, float width, float height, int red, int green,
 	m_ButtonText.setPosition(Vector2f((position.x + textPaddingX), (position.y + textPaddingY)));
 }
 
-void Button::draw(Window& window) const
+void Button::draw(RenderWindow& window) const
 {
 	window.draw(m_Button);
 	window.draw(m_ButtonText);

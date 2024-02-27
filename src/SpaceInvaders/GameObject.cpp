@@ -2,7 +2,6 @@
 #include "GameObject.h"
 #include "RectColliderComponent.h"
 #include "UpdateComponent.h"
-#include <GLFW/glfw3.h>
 #include <iostream>
 
 void GameObject::update(float fps)
@@ -21,7 +20,7 @@ void GameObject::update(float fps)
 	}
 }
 
-void GameObject::draw(GLFWwindow& window)
+void GameObject::draw(RenderWindow& window)
 {
 	if (m_Active && m_HasGraphicsComponent)
 	{
@@ -139,7 +138,7 @@ std::shared_ptr<Component> GameObject::getComponentByTypeAndSpecificType(std::st
 	return m_Components[0];
 }
 
-glm::vec4& GameObject::getEncompassingRectCollider()
+FloatRect& GameObject::getEncompassingRectCollider()
 {
 	if (m_HasCollider)
 	{

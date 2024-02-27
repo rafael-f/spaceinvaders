@@ -3,6 +3,7 @@
 #include "Button.h"
 #include "Screen.h"
 #include "ScreenManagerRemoteControl.h"
+#include "Event.h"
 
 class Screen;
 
@@ -15,17 +16,19 @@ private:
 	ScreenManagerRemoteControl* m_ScreenManagerRemoteControl;
 
 public:
+	virtual ~InputHandler() = default;
+
 	void initialiseInputHandler(ScreenManagerRemoteControl* sw, std::vector<std::shared_ptr<Button>>, View* pointerToUIView, Screen* parentScreen);
 
-	void handleInput(GLFWwindow& window, Event& event);
+	void handleInput(RenderWindow& window, Event& event);
 
 	virtual void handleGamepad();
 
-	virtual void handleKeyPressed(Event& event, GLFWwindow& window);
+	virtual void handleKeyPressed(Event& event, RenderWindow& window);
 
-	virtual void handleKeyReleased(Event& event, GLFWwindow& window);
+	virtual void handleKeyReleased(Event& event, RenderWindow& window);
 
-	virtual void handleLeftClick(std::string& buttonInteractedWith, GLFWwindow& window);
+	virtual void handleLeftClick(std::string& buttonInteractedWith, RenderWindow& window);
 
 	View* getPointerToUIView();
 

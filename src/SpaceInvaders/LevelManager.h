@@ -20,7 +20,7 @@ public:
 
 	std::vector<GameObject>& getGameObjects();
 
-	void loadGameObjectsForPlayMode(std::string screenToLoad);
+	void loadGameObjectsForPlayMode(const std::string& screenToLoad);
 
 	std::vector<GameObject>& GameObjectSharer::getGameObjectsWithGOS()
 	{
