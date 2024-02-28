@@ -1,12 +1,13 @@
+#include "BulletUpdateComponent.h"
+#include "GameInputHandler.h"
+#include "GameObject.h"
+#include "GameOverUIPanel.h"
 #include "GameScreen.h"
 #include "GameUIPanel.h"
-#include "GameInputHandler.h"
-#include "GameOverUIPanel.h"
-#include "WorldState.h"
-#include "GameObject.h"
-#include "WorldState.h"
-#include "BulletUpdateComponent.h"
 #include "InvaderUpdateComponent.h"
+#include "VideoMode.h"
+#include "WorldState.h"
+#include "WorldState.h"
 
 class BulletSpawner;
 
@@ -15,29 +16,29 @@ int WorldState::NUM_INVADERS;
 int WorldState::NUM_INVADERS_AT_START;
 
 GameScreen::GameScreen(ScreenManagerRemoteControl* smrc, Vector2i res)
+	:m_BackgroundTexture("graphics/background.png")
 {
-	m_GIH = make_shared<GameInputHandler>();
+	m_GIH = std::make_shared<GameInputHandler>();
 
-	auto guip = make_unique<GameUIPanel>(res);
+	auto guip = std::make_unique<GameUIPanel>(res);
 
-	addPanel(move(guip), smrc, m_GIH);
+	addPanel(std::move(guip), smrc, m_GIH);
 
-	auto m_GOIH = make_shared<GameOverInputHandler>();
+	auto m_GOIH = std::make_shared<GameOverInputHandler>();
 
-	auto gouip = make_unique<GameOverUIPanel>(res);
+	auto gouip = std::make_unique<GameOverUIPanel>(res);
 
-	addPanel(move(gouip), smrc, m_GOIH);
+	addPanel(std::move(gouip), smrc, m_GOIH);
 
 	m_ScreenManagerRemoteControl = smrc;
 
-	float screenRatio = VideoMode::getDesktopMode().width / VideoMode::getDesktopMode().height;
+	float screenRatio = static_cast<float>(VideoMode::getDesktopWidth()) / static_cast<float>(VideoMode::getDesktopHeight());
 
 	WorldState::WORLD_HEIGHT = WorldState::WORLD_WIDTH / screenRatio;
 
 	m_View.setSize(WorldState::WORLD_WIDTH, WorldState::WORLD_HEIGHT);
 	m_View.setCenter(Vector2f(WorldState::WORLD_WIDTH / 2, WorldState::WORLD_HEIGHT / 2));
 
-	m_BackgroundTexture.loadFromFile("graphics/background.png");
 	m_BackgroundSprite.setTexture(m_BackgroundTexture);
 
 	auto textureSize = m_BackgroundSprite.getTexture()->getSize();
@@ -68,7 +69,7 @@ void GameScreen::initialise()
 
 		if ((*it).getTag() == "invader")
 		{
-			static_pointer_cast<InvaderUpdateComponent>((*it).getFirstUpdateComponent())->initializeBulletSpawner(getBulletSpawner(), i);
+			std::static_pointer_cast<InvaderUpdateComponent>((*it).getFirstUpdateComponent())->initializeBulletSpawner(getBulletSpawner(), i);
 
 			WorldState::NUM_INVADERS++;
 		}
@@ -96,7 +97,7 @@ void GameScreen::update(float fps)
 	{
 		if (m_WaitingToSpawnBulletForPlayer)
 		{
-			static_pointer_cast<BulletUpdateComponent>(m_ScreenManagerRemoteControl->getGameObjects()[m_BulletObjectLocations[m_NextBullet]].getFirstUpdateComponent())->spawnForPlayer(m_PlayerBulletSpawnLocation);
+			std::static_pointer_cast<BulletUpdateComponent>(m_ScreenManagerRemoteControl->getGameObjects()[m_BulletObjectLocations[m_NextBullet]].getFirstUpdateComponent())->spawnForPlayer(m_PlayerBulletSpawnLocation);
 
 			m_WaitingToSpawnBulletForPlayer = false;
 			m_NextBullet++;
@@ -109,7 +110,7 @@ void GameScreen::update(float fps)
 
 		if (m_WaitingToSpawnBulletForInvader)
 		{
-			static_pointer_cast<BulletUpdateComponent>(m_ScreenManagerRemoteControl->getGameObjects()[m_BulletObjectLocations[m_NextBullet]].getFirstUpdateComponent())->spawnForInvader(m_InvaderBulletSpawnLocation);
+			std::static_pointer_cast<BulletUpdateComponent>(m_ScreenManagerRemoteControl->getGameObjects()[m_BulletObjectLocations[m_NextBullet]].getFirstUpdateComponent())->spawnForInvader(m_InvaderBulletSpawnLocation);
 
 			m_WaitingToSpawnBulletForInvader = false;
 			m_NextBullet++;

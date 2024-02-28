@@ -12,7 +12,6 @@ std::string RectColliderComponent::getColliderTag()
 
 void RectColliderComponent::setOrMoveCollider(float x, float y, float width, float height)
 {
-	
 	m_Collider.x = x;
 	m_Collider.y = y;
 	m_Collider.z = width;

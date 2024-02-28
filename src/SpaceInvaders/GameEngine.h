@@ -1,6 +1,6 @@
 #pragma once
 #include "ScreenManager.h"
-//#include "SoundEngine.h"
+#include "SoundEngine.h"
 #include <Windows.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -9,9 +9,9 @@
 class GameEngine
 {
 private:
-	//Clock m_Clock;
+	Clock m_Clock;
 
-	//Time m_DT;
+	Time m_DT;
 
 	GLFWwindow* m_Window;
 
@@ -28,7 +28,7 @@ private:
 	void draw(const unsigned int& shader, const unsigned int& location, const float& r);
 
 public:
-	//SoundEngine m_SoundEngine;
+	SoundEngine m_SoundEngine;
 
 	GameEngine();
 

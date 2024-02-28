@@ -2,6 +2,7 @@
 #include "SoundEngine.h"
 #include "GameScreen.h"
 #include "Joystick.h"
+#include "Keyboard.h"
 
 class BulletSpawner;
 

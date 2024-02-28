@@ -3,7 +3,7 @@
 #include "GameObjectSharer.h"
 #include "TransformComponent.h"
 #include "Vector2f.h"
-#include "Window.h"
+#include "RenderWindow.h"
 #include <iostream>
 #include <string>
 
@@ -14,7 +14,7 @@ private:
 	bool m_Enabled = false;
 
 public:
-	virtual void draw(Window& window, std::shared_ptr<TransformComponent> t) = 0;
+	virtual void draw(RenderWindow& window, std::shared_ptr<TransformComponent> t) = 0;
 	virtual void initializeGraphics(std::string bitmapName, Vector2f objectSize) = 0;
 
 	std::string Component::getType()

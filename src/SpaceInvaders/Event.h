@@ -1,4 +1,5 @@
 #pragma once
+#include "KeyEvent.h"
 
 class Event
 {
@@ -11,4 +12,6 @@ public:
     };
 
     EventType type{};
+
+    KeyEvent key;
 };

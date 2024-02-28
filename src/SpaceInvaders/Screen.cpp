@@ -14,7 +14,7 @@ void Screen::addPanel(std::unique_ptr<UIPanel> uip, ScreenManagerRemoteControl* 
 	m_InputHandlers.push_back(ih);
 }
 
-void Screen::handleInput(GLFWwindow& window)
+void Screen::handleInput(RenderWindow& window)
 {
 	Event event;
 	auto itr = m_InputHandlers.begin();
@@ -33,7 +33,7 @@ void Screen::update(float fps)
 {
 }
 
-void Screen::draw(GLFWwindow& window)
+void Screen::draw(RenderWindow& window)
 {
 	auto itr = m_Panels.begin();
 	auto end = m_Panels.end();

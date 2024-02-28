@@ -40,3 +40,8 @@ void Texture::Unbind()
 {
 	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 }
+
+Vector2i Texture::getSize()
+{
+	return Vector2i(m_Width, m_Height);
+}

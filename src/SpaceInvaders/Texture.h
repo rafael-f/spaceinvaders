@@ -1,6 +1,6 @@
 #pragma once
-
 #include "Renderer.h"
+#include "Vector2i.h"
 
 class Texture
 {
@@ -13,6 +13,8 @@ public:
 
 	inline int GetWidth() const { return m_Width; }
 	inline int GetHeight() const { return m_Height; }
+
+	Vector2i getSize();
 
 private:
 	unsigned int m_RendererID = 0;

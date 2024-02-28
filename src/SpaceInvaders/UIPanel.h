@@ -4,6 +4,8 @@
 #include <GLFW/glfw3.h>
 #include <string>
 #include "View.h"
+#include <vector>
+#include <memory>
 
 class UIPanel
 {
@@ -29,7 +31,7 @@ public:
 
 	std::vector<std::shared_ptr<Button>> getButtons();
 
-	virtual void draw(GLFWwindow& window);
+	virtual void draw(RenderWindow& window);
 
 	void show();
 

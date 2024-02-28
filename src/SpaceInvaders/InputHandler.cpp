@@ -1,5 +1,6 @@
 #include <sstream>
 #include "InputHandler.h"
+#include "Mouse.h"
 
 void InputHandler::initialiseInputHandler(ScreenManagerRemoteControl* sw, std::vector<std::shared_ptr<Button>> buttons, View* pointerToUIView, Screen* parentScreen)
 {

@@ -253,6 +253,24 @@
     <ClInclude Include="Event.h">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyEvent.h">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="Clock.h">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoMode.h">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceInvaders.cpp">
@@ -427,6 +445,21 @@
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
     <ClCompile Include="RenderWindow.cpp">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="Clock.cpp">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="VIdeoMode.cpp">
+      <Filter>Source Files\Engine\stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
   </ItemGroup>

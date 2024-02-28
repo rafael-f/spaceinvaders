@@ -3,7 +3,6 @@
 #include "InputHandler.h"
 #include "UIPanel.h"
 #include "ScreenManagerRemoteControl.h"
-#include <GLFW/glfw3.h>
 
 class InputHandler;
 
@@ -19,8 +18,8 @@ protected:
 public:
 	virtual void initialise();
 	void virtual update(float fps);
-	void virtual draw(GLFWwindow& window);
-	void handleInput(GLFWwindow& window);
+	void virtual draw(RenderWindow& window);
+	void handleInput(RenderWindow& window);
 
 	virtual ~Screen() = default;
 	View m_View;

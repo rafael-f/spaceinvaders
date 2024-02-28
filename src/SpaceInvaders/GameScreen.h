@@ -1,10 +1,12 @@
 #pragma once
-#include "Screen.h"
+#include "BulletSpawner.h"
+#include "Clock.h"
 #include "GameInputHandler.h"
 #include "GameOverInputHandler.h"
-#include "BulletSpawner.h"
 #include "PhysicsEnginePlayMode.h"
+#include "Screen.h"
 #include "Sprite.h"
+#include "Time.h"
 
 class GameScreen : public Screen, public BulletSpawner
 {

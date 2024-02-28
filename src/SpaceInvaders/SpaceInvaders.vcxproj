@@ -82,6 +82,7 @@
     <ClCompile Include="BlueprintObjectParser.cpp" />
     <ClCompile Include="BulletUpdate.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="FloatRect.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -105,7 +106,9 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InvaderUpdate.cpp" />
     <ClCompile Include="Joystick.cpp" />
+    <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="LevelManager.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ObjectTags.cpp" />
     <ClCompile Include="PhysicsEnginePlayMode.cpp" />
     <ClCompile Include="PlayerUpdate.cpp" />
@@ -130,10 +133,12 @@
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Time.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="UIPanel.cpp" />
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
+    <ClCompile Include="VIdeoMode.cpp" />
     <ClCompile Include="View.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -143,6 +148,7 @@
     <ClInclude Include="BulletSpawner.h" />
     <ClInclude Include="BulletUpdateComponent.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Clock.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
@@ -174,7 +180,10 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="InvaderUpdateComponent.h" />
     <ClInclude Include="Joystick.h" />
+    <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="KeyEvent.h" />
     <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="ObjectTags.h" />
     <ClInclude Include="PhysicsEnginePlayMode.h" />
     <ClInclude Include="PlayerUpdateComponent.h" />
@@ -198,6 +207,7 @@
     <ClInclude Include="StandardGraphicsComponent.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="UIPanel.h" />
     <ClInclude Include="UpdateComponent.h" />
@@ -206,6 +216,7 @@
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="VertexBufferLayout.h" />
+    <ClInclude Include="VideoMode.h" />
     <ClInclude Include="View.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WorldState.h" />

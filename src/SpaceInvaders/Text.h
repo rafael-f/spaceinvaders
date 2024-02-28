@@ -1,4 +1,5 @@
 #pragma once
+#include "Color.h"
 #include "Drawable.h"
 #include "Font.h"
 #include "Vector2f.h"
@@ -14,4 +15,6 @@ public:
 	void setFont(Font font);
 
 	void setPosition(Vector2f position);
+
+	void setFillColor(Color color);
 };
