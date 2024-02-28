@@ -2,13 +2,11 @@
 #include "GameObjectBlueprint.h"
 #include <string>
 
-using namespace std;
-
 class BlueprintObjectParser
 {
 private:
-	string extractStringBetweenTags(string stringToSearch, string startTag, string endTag);
+	std::string extractStringBetweenTags(const std::string& stringToSearch, const std::string& startTag, const std::string& endTag) const;
 
 public:
-	void parseNextObjectForBlueprint(ifstream& reader, GameObjectBlueprint& bp);
+	void parseNextObjectForBlueprint(std::ifstream& reader, GameObjectBlueprint& bp) const;
 };

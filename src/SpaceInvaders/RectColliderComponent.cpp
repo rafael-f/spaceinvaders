@@ -1,21 +1,21 @@
 #include "RectColliderComponent.h"
 
-RectColliderComponent::RectColliderComponent(string name)
+RectColliderComponent::RectColliderComponent(std::string name)
 {
 	m_Tag = "" + name;
 }
 
-string RectColliderComponent::getColliderTag()
+std::string RectColliderComponent::getColliderTag()
 {
 	return m_Tag;
 }
 
 void RectColliderComponent::setOrMoveCollider(float x, float y, float width, float height)
 {
-	m_Collider.left = x;
-	m_Collider.top = y;
-	m_Collider.width = width;
-	m_Collider.height = height;
+	m_Collider.x = x;
+	m_Collider.y = y;
+	m_Collider.z = width;
+	m_Collider.w = height;
 }
 
 FloatRect& RectColliderComponent::getColliderRectF()

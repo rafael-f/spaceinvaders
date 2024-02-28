@@ -1,7 +1,11 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include "FloatRect.h"
+#include "Font.h"
+#include "RectangleShape.h"
+#include "Text.h"
+#include "Vector2f.h"
+#include "RenderWindow.h"
+#include <string>
 
 class Button
 {
@@ -11,11 +15,11 @@ private:
 	Font m_Font;
 
 public:
+	Button(Vector2f position, float width, float height, int red, int green, int blue, const std::string& text);
+	
 	std::string m_Text;
 
 	FloatRect m_Collider;
 
-	Button(Vector2f position, float width, float height, int red, int green, int blue, std::string text);
-
-	void draw(RenderWindow& window);
+	void draw(RenderWindow& window) const;
 };

@@ -3,14 +3,12 @@
 #include<string>
 #include<map>
 
-using namespace std;
-
 class GameObjectBlueprint
 {
 private:
-	string m_Name = "";
-	vector<string> m_ComponentList;
-	string m_BitmapName = "";
+	std::string m_Name = "";
+	std::vector<std::string> m_ComponentList;
+	std::string m_BitmapName = "";
 
 	float m_Width;
 	float m_Height;
@@ -19,40 +17,40 @@ private:
 	float m_Speed;
 	bool m_EncompassingRectCollider = false;
 
-	string m_EncompassingRectColliderLabel = "";
+	std::string m_EncompassingRectColliderLabel = "";
 
 public:
-	float getWidth();
+	float getWidth() const;
 
 	void setWidth(float width);
 
-	float getHeight();
+	float getHeight() const;
 
 	void setHeight(float height);
 
-	float getLocationX();
+	float getLocationX() const;
 
 	void setLocationX(float locationX);
 
-	float getLocationY();
+	float getLocationY() const;
 
 	void setLocationY(float locationY);
 
-	void setName(string name);
+	void setName(const std::string& name);
 
-	string getName();
+	std::string getName() const;
 
-	vector<string>& getComponentList();
+	std::vector<std::string>& getComponentList();
 
-	void addToComponentList(string newComponent);
+	void addToComponentList(const std::string& newComponent);
 
-	string getBitmapName();
+	std::string getBitmapName() const;
 
-	void setBitmapName(string bitmapName);
+	void setBitmapName(const std::string& bitmapName);
 
-	string getEncompassingRectColliderLabel();
+	std::string getEncompassingRectColliderLabel() const;
 
-	bool getEncompassingRectCollider();
+	bool getEncompassingRectCollider() const;
 
-	void setEncompassingRectCollider(string label);
+	void setEncompassingRectCollider(const std::string& label);
 };

@@ -1,8 +1,9 @@
 #include "StandardGraphicsComponent.h"
 #include "BitmapStore.h"
 #include <iostream>
+#include "Color.h"
 
-void StandardGraphicsComponent::initializeGraphics(string bitmapName, Vector2f objectSize)
+void StandardGraphicsComponent::initializeGraphics(std::string bitmapName, Vector2f objectSize)
 {
 	BitmapStore::addBitmap("graphics/" + bitmapName + ".png");
 
@@ -12,10 +13,10 @@ void StandardGraphicsComponent::initializeGraphics(string bitmapName, Vector2f o
 
 	m_Sprite.setScale(float(objectSize.x) / textureSize.x, float(objectSize.y) / textureSize.y);
 
-	m_Sprite.setColor(sf::Color(0, 255, 0));
+	m_Sprite.setColor(Color(0, 255, 0));
 }
 
-void StandardGraphicsComponent::draw(RenderWindow& window, shared_ptr<TransformComponent> t)
+void StandardGraphicsComponent::draw(RenderWindow& window, std::shared_ptr<TransformComponent> t)
 {
 	m_Sprite.setPosition(t->getLocation());
 	window.draw(m_Sprite);

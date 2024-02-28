@@ -5,16 +5,13 @@
 class ColliderComponent : public Component
 {
 private:
-	string m_Type = "collider";
+	std::string m_Type = "collider";
+
 	bool m_Enabled = false;
 
 public:
-	/****************************************************
-	*****************************************************
-	From Component interface
-	*****************************************************
-	*****************************************************/
-	string Component::getType() {
+	std::string Component::getType()
+	{
 		return m_Type;
 	}
 

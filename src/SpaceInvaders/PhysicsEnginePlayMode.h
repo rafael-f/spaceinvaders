@@ -5,7 +5,7 @@
 class PhysicsEnginePlayMode
 {
 private:
-	shared_ptr<PlayerUpdateComponent> m_PUC;
+	std::shared_ptr<PlayerUpdateComponent> m_PUC;
 
 	GameObject* m_Player;
 
@@ -14,14 +14,14 @@ private:
 	bool m_NeedToDropDownAndReverse = false;
 	bool m_CompletedDropDownAndReverse = false;
 
-	void detectInvaderCollisions(vector<GameObject>& objects, const vector<int>& bulletPositions);
+	void detectInvaderCollisions(std::vector<GameObject>& objects, const std::vector<int>& bulletPositions);
 
-	void detectPlayerCollisionsAndInvaderDirection(vector<GameObject>& objects, const vector<int>& bulletPositions);
+	void detectPlayerCollisionsAndInvaderDirection(std::vector<GameObject>& objects, const std::vector<int>& bulletPositions);
 
 	void handleInvaderDirection();
 
 public:
 	void initilize(GameObjectSharer& gos);
 
-	void detectCollisions(vector<GameObject>& objects, const vector<int>& bulletPositions);
+	void detectCollisions(std::vector<GameObject>& objects, const std::vector<int>& bulletPositions);
 };

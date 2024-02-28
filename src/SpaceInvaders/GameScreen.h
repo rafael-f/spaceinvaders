@@ -1,20 +1,23 @@
 #pragma once
-#include "Screen.h"
+#include "BulletSpawner.h"
+#include "Clock.h"
 #include "GameInputHandler.h"
 #include "GameOverInputHandler.h"
-#include "BulletSpawner.h"
 #include "PhysicsEnginePlayMode.h"
+#include "Screen.h"
+#include "Sprite.h"
+#include "Time.h"
 
 class GameScreen : public Screen, public BulletSpawner
 {
 private:
 	ScreenManagerRemoteControl* m_ScreenManagerRemoteControl;
-	shared_ptr<GameInputHandler> m_GIH;
+	std::shared_ptr<GameInputHandler> m_GIH;
 	PhysicsEnginePlayMode m_PhysicsEnginePlayMode;
 
 	int m_NumberInvadersInWorldFile = 0;
 
-	vector<int> m_BulletObjectLocations;
+	std::vector<int> m_BulletObjectLocations;
 
 	int m_NextBullet = 0;
 	bool m_WaitingToSpawnBulletForPlayer = false;
@@ -40,11 +43,6 @@ public:
 
 	BulletSpawner* getBulletSpawner();
 
-	/****************************************************
-	*****************************************************
-	From BulletSpawner interface
-	*****************************************************
-	*****************************************************/
 	void BulletSpawner::spawnBullet(Vector2f spawnLocation, bool forPlayer)
 	{
 		if (forPlayer)

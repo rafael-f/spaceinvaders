@@ -1,11 +1,11 @@
+#include "BulletUpdateComponent.h"
 #include "GameObjectFactoryPlayMode.h"
-#include <iostream>
-#include "TransformComponent.h"
-#include "StandardGraphicsComponent.h"
+#include "InvaderUpdateComponent.h"
 #include "PlayerUpdateComponent.h"
 #include "RectColliderComponent.h"
-#include "InvaderUpdateComponent.h"
-#include "BulletUpdateComponent.h"
+#include "StandardGraphicsComponent.h"
+#include "TransformComponent.h"
+#include <iostream>
 
 void GameObjectFactoryPlayMode::buildGameObject(GameObjectBlueprint& bp, std::vector<GameObject>& gameObjects)
 {
@@ -19,23 +19,23 @@ void GameObjectFactoryPlayMode::buildGameObject(GameObjectBlueprint& bp, std::ve
 	{
 		if (*it == "Transform")
 		{
-			gameObject.addComponent(make_shared<TransformComponent>(bp.getWidth(), bp.getHeight(), Vector2f(bp.getLocationX(), bp.getLocationY())));
+			gameObject.addComponent(std::make_shared<TransformComponent>(bp.getWidth(), bp.getHeight(), Vector2f(bp.getLocationX(), bp.getLocationY())));
 		}
 		else if (*it == "Player Update")
 		{
-			gameObject.addComponent(make_shared<PlayerUpdateComponent>());
+			gameObject.addComponent(std::make_shared<PlayerUpdateComponent>());
 		}
 		else if (*it == "Invader Update")
 		{
-			gameObject.addComponent(make_shared<InvaderUpdateComponent>());
+			gameObject.addComponent(std::make_shared<InvaderUpdateComponent>());
 		}
 		else if (*it == "Bullet Update")
 		{
-			gameObject.addComponent(make_shared<BulletUpdateComponent>());
+			gameObject.addComponent(std::make_shared<BulletUpdateComponent>());
 		}
 		else if (*it == "Standard Graphics")
 		{
-			shared_ptr<StandardGraphicsComponent> sgp = make_shared<StandardGraphicsComponent>();
+			std::shared_ptr<StandardGraphicsComponent> sgp = std::make_shared<StandardGraphicsComponent>();
 
 			gameObject.addComponent(sgp);
 
@@ -45,7 +45,7 @@ void GameObjectFactoryPlayMode::buildGameObject(GameObjectBlueprint& bp, std::ve
 
 	if (bp.getEncompassingRectCollider())
 	{
-		shared_ptr<RectColliderComponent> rcc = make_shared<RectColliderComponent>(bp.getEncompassingRectColliderLabel());
+		std::shared_ptr<RectColliderComponent> rcc = std::make_shared<RectColliderComponent>(bp.getEncompassingRectColliderLabel());
 
 		gameObject.addComponent(rcc);
 

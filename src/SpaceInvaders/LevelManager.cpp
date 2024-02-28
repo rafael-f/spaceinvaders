@@ -2,11 +2,11 @@
 #include "PlayModeObjectLoader.h"
 #include <iostream>
 
-void LevelManager::loadGameObjectsForPlayMode(string screenToLoad)
+void LevelManager::loadGameObjectsForPlayMode(const std::string& screenToLoad)
 {
 	m_GameObjects.clear();
 
-	string levelToLoad = "" + WORLD_FOLDER + SLASH + screenToLoad;
+	std::string levelToLoad = "" + WORLD_FOLDER + SLASH + screenToLoad;
 
 	PlayModeObjectLoader pmol;
 
@@ -15,7 +15,7 @@ void LevelManager::loadGameObjectsForPlayMode(string screenToLoad)
 	runStartPhase();
 }
 
-vector<GameObject>& LevelManager::getGameObjects()
+std::vector<GameObject>& LevelManager::getGameObjects()
 {
 	return m_GameObjects;
 }

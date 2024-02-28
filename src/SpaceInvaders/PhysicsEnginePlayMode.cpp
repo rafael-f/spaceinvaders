@@ -5,8 +5,9 @@
 #include "WorldState.h"
 #include "InvaderUpdateComponent.h"
 #include "BulletUpdateComponent.h"
+#include "FloatRect.h"
 
-void PhysicsEnginePlayMode::detectInvaderCollisions(vector<GameObject>& objects, const vector<int>& bulletPositions)
+void PhysicsEnginePlayMode::detectInvaderCollisions(std::vector<GameObject>& objects, const std::vector<int>& bulletPositions)
 {
 	Vector2f offScreen(-1, -1);
 
@@ -22,7 +23,7 @@ void PhysicsEnginePlayMode::detectInvaderCollisions(vector<GameObject>& objects,
 			auto bulletEnd = objects.end();
 			for (bulletIt; bulletIt != bulletEnd; ++bulletIt)
 			{
-				if ((*invaderIt).getEncompassingRectCollider().intersects((*bulletIt).getEncompassingRectCollider()) && (*bulletIt).getTag() == "bullet" && static_pointer_cast<BulletUpdateComponent>((*bulletIt).getFirstUpdateComponent())->m_BelongsToPlayer)
+				if ((*invaderIt).getEncompassingRectCollider().intersects((*bulletIt).getEncompassingRectCollider()) && (*bulletIt).getTag() == "bullet" && std::static_pointer_cast<BulletUpdateComponent>((*bulletIt).getFirstUpdateComponent())->m_BelongsToPlayer)
 				{
 					SoundEngine::playInvaderExplode();
 
@@ -41,13 +42,13 @@ void PhysicsEnginePlayMode::detectInvaderCollisions(vector<GameObject>& objects,
 	}
 }
 
-void PhysicsEnginePlayMode::detectPlayerCollisionsAndInvaderDirection(vector<GameObject>& objects, const vector<int>& bulletPositions)
+void PhysicsEnginePlayMode::detectPlayerCollisionsAndInvaderDirection(std::vector<GameObject>& objects, const std::vector<int>& bulletPositions)
 {
 	Vector2f offScreen(-1, -1);
 
 	FloatRect playerCollider = m_Player->getEncompassingRectCollider();
 
-	shared_ptr<TransformComponent> playerTransform = m_Player->getTransformComponent();
+	std::shared_ptr<TransformComponent> playerTransform = m_Player->getTransformComponent();
 
 	Vector2f playerLocation = playerTransform->getLocation();
 
@@ -88,11 +89,11 @@ void PhysicsEnginePlayMode::detectPlayerCollisionsAndInvaderDirection(vector<Gam
 				}
 			}
 
-			shared_ptr<TransformComponent>currentTransform = (*it3).getTransformComponent();
+			std::shared_ptr<TransformComponent>currentTransform = (*it3).getTransformComponent();
 
 			Vector2f currentLocation = currentTransform->getLocation();
 
-			string currentTag = (*it3).getTag();
+			std::string currentTag = (*it3).getTag();
 
 			Vector2f currentSize = currentTransform->getSize();
 
@@ -111,7 +112,7 @@ void PhysicsEnginePlayMode::detectPlayerCollisionsAndInvaderDirection(vector<Gam
 					{
 						// The invader is passed its
 						// furthest right position
-						if (static_pointer_cast<InvaderUpdateComponent>((*it3).getFirstUpdateComponent())->isMovingRight())
+						if (std::static_pointer_cast<InvaderUpdateComponent>((*it3).getFirstUpdateComponent())->isMovingRight())
 						{
 							// The invader is travelling
 							// right so set a flag that
@@ -124,7 +125,7 @@ void PhysicsEnginePlayMode::detectPlayerCollisionsAndInvaderDirection(vector<Gam
 					{
 						// The invader is past its furthest
 						// left position
-						if (!static_pointer_cast<InvaderUpdateComponent>((*it3).getFirstUpdateComponent())->isMovingRight())
+						if (!std::static_pointer_cast<InvaderUpdateComponent>((*it3).getFirstUpdateComponent())->isMovingRight())
 						{
 							// The invader is travelling
 							// left so set a flag that an
@@ -139,7 +140,7 @@ void PhysicsEnginePlayMode::detectPlayerCollisionsAndInvaderDirection(vector<Gam
 					if ((*it3).hasUpdateComponent())
 					{
 						// Drop down and reverse
-						static_pointer_cast<InvaderUpdateComponent>((*it3).getFirstUpdateComponent())->dropDownAndReverse();
+						std::static_pointer_cast<InvaderUpdateComponent>((*it3).getFirstUpdateComponent())->dropDownAndReverse();
 					}
 				}
 			}
@@ -162,12 +163,12 @@ void PhysicsEnginePlayMode::handleInvaderDirection()
 
 void PhysicsEnginePlayMode::initilize(GameObjectSharer& gos)
 {
-	m_PUC = static_pointer_cast<PlayerUpdateComponent>(gos.findFirstObjectWithTag("Player").getComponentByTypeAndSpecificType("update", "player"));
+	m_PUC = std::static_pointer_cast<PlayerUpdateComponent>(gos.findFirstObjectWithTag("Player").getComponentByTypeAndSpecificType("update", "player"));
 
 	m_Player = &gos.findFirstObjectWithTag("Player");
 }
 
-void PhysicsEnginePlayMode::detectCollisions(vector<GameObject>& objects, const vector<int>& bulletPositions)
+void PhysicsEnginePlayMode::detectCollisions(std::vector<GameObject>& objects, const std::vector<int>& bulletPositions)
 {
 	detectInvaderCollisions(objects, bulletPositions);
 

@@ -1,3 +1,4 @@
+#include "Color.h"
 #include "GameOverUIPanel.h"
 #include "GameScreen.h"
 
@@ -14,7 +15,7 @@ GameOverUIPanel::GameOverUIPanel(Vector2i res) :
 	m_ButtonWidth = res.x / 20;
 	m_ButtonHeight = res.y / 20;
 	m_ButtonPadding = res.x / 100;
-	m_Text.setFillColor(sf::Color(0, 255, 0, 255));// Green
+	m_Text.setFillColor(Color(0, 255, 0, 255));// Green
 	m_Text.setString("GAME OVER!");
 	m_Font.loadFromFile("fonts/Roboto-Bold.ttf");
 	m_Text.setFont(m_Font);

@@ -1,31 +1,24 @@
 #pragma once
 #include "ColliderComponent.h"
-#include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include "FloatRect.h"
 
 class RectColliderComponent : public ColliderComponent
 {
 private:
-	string m_SpecificType = "rect";
+	std::string m_SpecificType = "rect";
 	FloatRect m_Collider;
-	string m_Tag = "";
+	std::string m_Tag = "";
 
 public:
-	RectColliderComponent(string name);
+	explicit RectColliderComponent(std::string name);
 
-	string getColliderTag();
+	std::string getColliderTag();
 
 	void setOrMoveCollider(float x, float y, float width, float height);
 
 	FloatRect& getColliderRectF();
 
-	/****************************************************
-	*****************************************************
-	From Component interface base class
-	*****************************************************
-	*****************************************************/
-	string getSpecificType()
+	std::string getSpecificType() override
 	{
 		return m_SpecificType;
 	}

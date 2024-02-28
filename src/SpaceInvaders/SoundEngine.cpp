@@ -1,9 +1,5 @@
-#include <SFML/Audio.hpp>
 #include <assert.h>
 #include "SoundEngine.h"
-
-using namespace std;
-using namespace sf;
 
 SoundEngine* SoundEngine::m_s_Instance = nullptr;
 

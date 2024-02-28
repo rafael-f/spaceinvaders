@@ -1,6 +1,8 @@
 #pragma once
 #include "Component.h"
 #include "GraphicsComponent.h"
+#include "RenderWindow.h"
+#include "Sprite.h"
 #include <string>
 
 class Component;
@@ -8,16 +10,11 @@ class Component;
 class StandardGraphicsComponent : public GraphicsComponent
 {
 private:
-	sf::Sprite m_Sprite;
-	string m_SpecificType = "standard";
+	Sprite m_Sprite;
+	std::string m_SpecificType = "standard";
 
 public:
-	/****************************************************
-	*****************************************************
-	From Component interface base class
-	*****************************************************
-	*****************************************************/
-	string Component::getSpecificType()
+	std::string Component::getSpecificType()
 	{
 		return m_SpecificType;
 	}
@@ -26,12 +23,7 @@ public:
 	{
 	}
 
-	/****************************************************
-	*****************************************************
-	From GraphicsComponent
-	*****************************************************
-	*****************************************************/
-	void draw(RenderWindow& window, shared_ptr<TransformComponent> t) override;
+	void draw(RenderWindow& window, std::shared_ptr<TransformComponent> t) override;
 
-	void initializeGraphics(string bitmapName, Vector2f objectSize) override;
+	void initializeGraphics(std::string bitmapName, Vector2f objectSize) override;
 };

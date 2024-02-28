@@ -1,15 +1,13 @@
 #pragma once
 #include "GameObject.h"
-#include <vector>
-#include <string>
 #include "GameObjectSharer.h"
-
-using namespace std;
+#include <string>
+#include <vector>
 
 class LevelManager : public GameObjectSharer
 {
 private:
-	vector<GameObject> m_GameObjects;
+	std::vector<GameObject> m_GameObjects;
 
 	const std::string WORLD_FOLDER = "world";
 	const std::string SLASH = "/";
@@ -18,21 +16,18 @@ private:
 	void activateAllGameObjects();
 
 public:
-	vector<GameObject>& getGameObjects();
+	virtual ~LevelManager() = default;
 
-	void loadGameObjectsForPlayMode(string screenToLoad);
+	std::vector<GameObject>& getGameObjects();
 
-	/****************************************************
-	*****************************************************
-	From GameObjectSharer interface
-	*****************************************************
-	*****************************************************/
-	vector<GameObject>& GameObjectSharer::getGameObjectsWithGOS()
+	void loadGameObjectsForPlayMode(const std::string& screenToLoad);
+
+	std::vector<GameObject>& GameObjectSharer::getGameObjectsWithGOS()
 	{
 		return m_GameObjects;
 	}
 
-	GameObject& GameObjectSharer::findFirstObjectWithTag(string tag)
+	GameObject& GameObjectSharer::findFirstObjectWithTag(std::string tag)
 	{
 		auto it = m_GameObjects.begin();
 		auto end = m_GameObjects.end();

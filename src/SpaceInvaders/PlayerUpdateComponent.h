@@ -1,16 +1,16 @@
 #pragma once
-#include "UpdateComponent.h"
-#include "TransformComponent.h"
+#include "GameObject.h"
 #include "GameObjectSharer.h"
 #include "RectColliderComponent.h"
-#include "GameObject.h"
+#include "TransformComponent.h"
+#include "UpdateComponent.h"
 
 class PlayerUpdateComponent : public UpdateComponent
 {
 private:
-	string m_SpecificType = "player";
-	shared_ptr<TransformComponent> m_TC;
-	shared_ptr<RectColliderComponent> m_RCC;
+	std::string m_SpecificType = "player";
+	std::shared_ptr<TransformComponent> m_TC;
+	std::shared_ptr<RectColliderComponent> m_RCC;
 	float m_Speed = 50.0f;
 	float m_XExtent = 0;
 	float m_YExtent = 0;
@@ -31,27 +31,17 @@ public:
 	void stopUp();
 	void stopDown();
 
-	/****************************************************
-	*****************************************************
-	From Component interface base class
-	*****************************************************
-	*****************************************************/
-	string Component::getSpecificType()
+	std::string Component::getSpecificType()
 	{
 		return m_SpecificType;
 	}
 
 	void Component::start(GameObjectSharer* gos, GameObject* self)
 	{
-		m_TC = static_pointer_cast<TransformComponent>(self->getComponentByTypeAndSpecificType("transform", "transform"));
+		m_TC = std::static_pointer_cast<TransformComponent>(self->getComponentByTypeAndSpecificType("transform", "transform"));
 
-		m_RCC = static_pointer_cast<RectColliderComponent>(self->getComponentByTypeAndSpecificType("collider", "rect"));
+		m_RCC = std::static_pointer_cast<RectColliderComponent>(self->getComponentByTypeAndSpecificType("collider", "rect"));
 	}
 
-	/****************************************************
-	*****************************************************
-	From UpdateComponent
-	*****************************************************
-	*****************************************************/
 	void update(float fps) override;
 };

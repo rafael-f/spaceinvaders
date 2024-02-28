@@ -4,18 +4,13 @@
 class UpdateComponent : public Component
 {
 private:
-	string m_Type = "update";
+	std::string m_Type = "update";
 	bool m_Enabled = false;
 
 public:
 	virtual void update(float fps) = 0;
 
-	/****************************************************
-	*****************************************************
-	From Component interface
-	*****************************************************
-	*****************************************************/
-	string Component::getType()
+	std::string Component::getType()
 	{
 		return m_Type;
 	}

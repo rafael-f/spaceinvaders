@@ -1,9 +1,6 @@
 #pragma once
-#ifndef SOUND_ENGINE_H
-#define SOUND_ENGINE_H
-#include <SFML/Audio.hpp>
-
-using namespace sf;
+#include "SoundBuffer.h"
+#include "Sound.h"
 
 class SoundEngine
 {
@@ -30,4 +27,3 @@ public:
 
 	static SoundEngine* m_s_Instance;
 };
-#endif

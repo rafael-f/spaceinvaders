@@ -1,9 +1,10 @@
 #include "PlayerUpdateComponent.h"
 #include "WorldState.h"
+#include "Joystick.h"
 
 void PlayerUpdateComponent::update(float fps)
 {
-	if (sf::Joystick::isConnected(0))
+	if (Joystick::isConnected(0))
 	{
 		m_TC->getLocation().x += ((m_Speed / 100) * m_XExtent) * fps;
 
@@ -43,13 +44,13 @@ void PlayerUpdateComponent::update(float fps)
 		m_TC->getLocation().x = 0;
 	}
 
-	if (m_TC->getLocation().y > WorldState::WORLD_HEIGHT - m_TC->getSize().y)
+	if (m_TC->getLocation().y > static_cast<float>(WorldState::WORLD_HEIGHT) - m_TC->getSize().y)
 	{
-		m_TC->getLocation().y = WorldState::WORLD_HEIGHT - m_TC->getSize().y;
+		m_TC->getLocation().y = static_cast<float>(WorldState::WORLD_HEIGHT) - m_TC->getSize().y;
 	}
-	else if (m_TC->getLocation().y < WorldState::WORLD_HEIGHT / 2)
+	else if (m_TC->getLocation().y < static_cast<float>(WorldState::WORLD_HEIGHT) / 2)
 	{
-		m_TC->getLocation().y = WorldState::WORLD_HEIGHT / 2;
+		m_TC->getLocation().y = static_cast<float>(WorldState::WORLD_HEIGHT) / 2;
 	}
 }
 

@@ -8,8 +8,8 @@ class GameScreen;
 class GameInputHandler : public InputHandler
 {
 private:
-	shared_ptr<PlayerUpdateComponent> m_PUC;
-	shared_ptr<TransformComponent> m_PTC;
+	std::shared_ptr<PlayerUpdateComponent> m_PUC;
+	std::shared_ptr<TransformComponent> m_PTC;
 	bool mBButtonPressed = false;
 
 public:

@@ -3,19 +3,17 @@
 #include <iostream>
 #include <fstream>
 
-void PlayModeObjectLoader::loadGameObjectsForPlayMode(string pathToFile, vector<GameObject>& gameObjects)
+void PlayModeObjectLoader::loadGameObjectsForPlayMode(std::string pathToFile, std::vector<GameObject>& gameObjects)
 {
-	ifstream reader(pathToFile);
+	std::ifstream reader(pathToFile);
 
-	string lineFromFile;
+	std::string lineFromFile;
 
-	float x = 0, y = 0, width = 0, height = 0;
-
-	string value = "";
+	std::string value = "";
 
 	while (getline(reader, lineFromFile))
 	{
-		if (lineFromFile.find(ObjectTags::START_OF_OBJECT) != string::npos)
+		if (lineFromFile.find(ObjectTags::START_OF_OBJECT) != std::string::npos)
 		{
 			GameObjectBlueprint bp;
 

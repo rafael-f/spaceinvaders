@@ -1,46 +1,38 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <map>
+#include "BitmapStore.h"
 #include "GameScreen.h"
+#include "LevelManager.h"
 #include "ScreenManagerRemoteControl.h"
 #include "SelectScreen.h"
-#include "LevelManager.h"
-#include "BitmapStore.h"
 #include <iostream>
-
-using namespace sf;
-using namespace std;
+#include <map>
+#include "Screen.h"
 
 class ScreenManager : public ScreenManagerRemoteControl
 {
 private:
-	map <string, unique_ptr<Screen>> m_Screens;
+	std::map <std::string, std::unique_ptr<Screen>> m_Screens;
 
 	LevelManager m_LevelManager;
 protected:
-	string m_CurrentScreen = "Select";
+	std::string m_CurrentScreen = "Select";
 
 public:
 	BitmapStore m_BS;
 
-	ScreenManager(Vector2i res);
+	explicit ScreenManager(Vector2i res);
 
 	void update(float fps);
 	void draw(RenderWindow& window);
 	void handleInput(RenderWindow& window);
 
-	/****************************************************
-	*****************************************************
-	From ScreenManagerRemoteControl interface
-	*****************************************************
-	*****************************************************/
-	void ScreenManagerRemoteControl::SwitchScreens(string screenToSwitchTo)
+	void ScreenManagerRemoteControl::SwitchScreens(std::string screenToSwitchTo)
 	{
 		m_CurrentScreen = "" + screenToSwitchTo;
 		m_Screens[m_CurrentScreen]->initialise();
 	}
 
-	void ScreenManagerRemoteControl::loadLevelInPlayMode(string screenToLoad)
+	void ScreenManagerRemoteControl::loadLevelInPlayMode(std::string screenToLoad)
 	{
 		m_LevelManager.getGameObjects().clear();
 		m_LevelManager.
@@ -48,7 +40,7 @@ public:
 		SwitchScreens("Game");
 	}
 
-	vector<GameObject>&	ScreenManagerRemoteControl::getGameObjects()
+	std::vector<GameObject>& ScreenManagerRemoteControl::getGameObjects()
 	{
 		return m_LevelManager.getGameObjects();
 	}

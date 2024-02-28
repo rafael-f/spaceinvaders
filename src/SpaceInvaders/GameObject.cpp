@@ -1,8 +1,8 @@
 #include "DevelopState.h"
 #include "GameObject.h"
-#include <iostream>
-#include "UpdateComponent.h"
 #include "RectColliderComponent.h"
+#include "UpdateComponent.h"
+#include <iostream>
 
 void GameObject::update(float fps)
 {
@@ -10,7 +10,7 @@ void GameObject::update(float fps)
 	{
 		for (int i = m_FirstUpdateComponentLocation; i < m_FirstUpdateComponentLocation + m_NumberUpdateComponents; i++)
 		{
-			shared_ptr<UpdateComponent> tempUpdate = static_pointer_cast<UpdateComponent>(m_Components[i]);
+			std::shared_ptr<UpdateComponent> tempUpdate = std::static_pointer_cast<UpdateComponent>(m_Components[i]);
 
 			if (tempUpdate->enabled())
 			{
@@ -31,17 +31,17 @@ void GameObject::draw(RenderWindow& window)
 	}
 }
 
-shared_ptr<GraphicsComponent> GameObject::getGraphicsComponent()
+std::shared_ptr<GraphicsComponent> GameObject::getGraphicsComponent()
 {
-	return static_pointer_cast<GraphicsComponent>(m_Components[m_GraphicsComponentLocation]);
+	return std::static_pointer_cast<GraphicsComponent>(m_Components[m_GraphicsComponentLocation]);
 }
 
-shared_ptr<TransformComponent> GameObject::getTransformComponent()
+std::shared_ptr<TransformComponent> GameObject::getTransformComponent()
 {
-	return static_pointer_cast<TransformComponent>(m_Components[m_TransformComponentLocation]);
+	return std::static_pointer_cast<TransformComponent>(m_Components[m_TransformComponentLocation]);
 }
 
-void GameObject::addComponent(shared_ptr<Component> component)
+void GameObject::addComponent(std::shared_ptr<Component> component)
 {
 	m_Components.push_back(component);
 
@@ -96,7 +96,7 @@ bool GameObject::isActive()
 	return m_Active;
 }
 
-void GameObject::setTag(String tag)
+void GameObject::setTag(const std::string& tag)
 {
 	m_Tag = "" + tag;
 }
@@ -117,7 +117,7 @@ void GameObject::start(GameObjectSharer* gos)
 }
 
 // Slow - only use in start function
-shared_ptr<Component> GameObject::getComponentByTypeAndSpecificType(string type, string specificType)
+std::shared_ptr<Component> GameObject::getComponentByTypeAndSpecificType(std::string type, std::string specificType)
 {
 	auto it = m_Components.begin();
 	auto end = m_Components.end();
@@ -142,18 +142,18 @@ FloatRect& GameObject::getEncompassingRectCollider()
 {
 	if (m_HasCollider)
 	{
-		return (static_pointer_cast<RectColliderComponent>(m_Components[m_FirstRectColliderComponentLocation]))->getColliderRectF();
+		return (std::static_pointer_cast<RectColliderComponent>(m_Components[m_FirstRectColliderComponentLocation]))->getColliderRectF();
 	}
 }
 
-string GameObject::getEncompassingRectColliderTag()
+std::string GameObject::getEncompassingRectColliderTag()
 {
-	return static_pointer_cast<RectColliderComponent>(m_Components[m_FirstRectColliderComponentLocation])->getColliderTag();
+	return std::static_pointer_cast<RectColliderComponent>(m_Components[m_FirstRectColliderComponentLocation])->getColliderTag();
 }
 
-shared_ptr<UpdateComponent> GameObject::getFirstUpdateComponent()
+std::shared_ptr<UpdateComponent> GameObject::getFirstUpdateComponent()
 {
-	return static_pointer_cast<UpdateComponent>(m_Components[m_FirstUpdateComponentLocation]);
+	return std::static_pointer_cast<UpdateComponent>(m_Components[m_FirstUpdateComponentLocation]);
 }
 
 bool GameObject::hasCollider()

@@ -40,7 +40,7 @@ void BulletUpdateComponent::deSpawn()
 	m_IsSpawned = false;
 }
 
-bool BulletUpdateComponent::isMovingUp()
+bool BulletUpdateComponent::isMovingUp() const
 {
 	return m_MovingUp;
 }
@@ -55,11 +55,10 @@ void BulletUpdateComponent::update(float fps)
 		}
 		else
 		{
-			m_TC->getLocation().y += m_Speed /
-				m_AlienBulletSpeedModifier * fps;
+			m_TC->getLocation().y += m_Speed / static_cast<float>(m_AlienBulletSpeedModifier) * fps;
 		}
 
-		if (m_TC->getLocation().y > WorldState::WORLD_HEIGHT || m_TC->getLocation().y < -2)
+		if (m_TC->getLocation().y > static_cast<float>(WorldState::WORLD_HEIGHT) || m_TC->getLocation().y < -2)
 		{
 			deSpawn();
 		}

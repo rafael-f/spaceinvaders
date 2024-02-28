@@ -1,9 +1,10 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "ScreenManager.h"
 #include "SoundEngine.h"
-
-using namespace sf;
+#include <Windows.h>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include "Vector2i.h"
 
 class GameEngine
 {
@@ -12,19 +13,19 @@ private:
 
 	Time m_DT;
 
-	RenderWindow m_Window;
+	GLFWwindow* m_Window;
 
-	unique_ptr<ScreenManager> m_ScreenManager;
+	std::unique_ptr<ScreenManager> m_ScreenManager;
 
 	float m_FPS = 0;
 
-	Vector2f m_Resolution;
+	Vector2i m_Resolution;
 
 	void handleInput();
 
 	void update();
 
-	void draw();
+	void draw(const unsigned int& shader, const unsigned int& location, const float& r);
 
 public:
 	SoundEngine m_SoundEngine;

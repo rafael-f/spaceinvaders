@@ -1,5 +1,7 @@
 #pragma once
 #include "Screen.h"
+#include "Texture.h"
+#include "Sprite.h"
 
 class SelectScreen : public Screen
 {

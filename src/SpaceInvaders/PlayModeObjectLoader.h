@@ -5,8 +5,6 @@
 #include "BlueprintObjectParser.h"
 #include "GameObjectFactoryPlayMode.h"
 
-using namespace std;
-
 class PlayModeObjectLoader
 {
 private:
@@ -14,5 +12,5 @@ private:
 	GameObjectFactoryPlayMode m_GameObjectFactoryPlayMode;
 
 public:
-	void loadGameObjectsForPlayMode(string pathToFile, vector<GameObject>& mGameObjects);
+	void loadGameObjectsForPlayMode(std::string pathToFile, std::vector<GameObject>& mGameObjects);
 };

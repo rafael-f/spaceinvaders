@@ -1,8 +1,10 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Vector2f.h"
 
 class BulletSpawner
 {
 public:
-	virtual void spawnBullet(sf::Vector2f spawnLocation, bool forPlayer) = 0;
+	virtual void spawnBullet(Vector2f spawnLocation, bool forPlayer) = 0;
+
+	virtual ~BulletSpawner() = default;
 };

@@ -2,6 +2,7 @@
 #include "SoundEngine.h"
 #include "WorldState.h"
 #include <iostream>
+#include "Keyboard.h"
 
 int WorldState::WAVE_NUMBER;
 

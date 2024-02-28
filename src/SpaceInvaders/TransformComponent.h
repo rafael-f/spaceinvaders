@@ -1,15 +1,13 @@
 #pragma once
 #include "Component.h"
-#include<SFML/Graphics.hpp>
-
-using namespace sf;
+#include "Vector2f.h"
 
 class Component;
 
 class TransformComponent : public Component
 {
 private:
-	const string m_Type = "transform";
+	const std::string m_Type = "transform";
 	Vector2f m_Location;
 	float m_Height;
 	float m_Width;
@@ -19,21 +17,15 @@ public:
 
 	Vector2f& getLocation();
 
-	Vector2f getSize();
+	Vector2f getSize() const;
 
-	/****************************************************
-	*****************************************************
-	From Component interface
-	*****************************************************
-	*****************************************************/
-	string Component::getType()
+	std::string Component::getType()
 	{
 		return m_Type;
 	}
 
-	string Component::getSpecificType()
+	std::string Component::getSpecificType()
 	{
-		// Only one type of Transform so just return m_Type
 		return m_Type;
 	}
 

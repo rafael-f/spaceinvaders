@@ -1,3 +1,4 @@
+#include "Color.h"
 #include "SelectUIPanel.h"
 #include <iostream>
 
@@ -14,7 +15,7 @@ SelectUIPanel::SelectUIPanel(Vector2i res) :
 	m_ButtonWidth = res.x / 20;
 	m_ButtonHeight = res.y / 20;
 	m_ButtonPadding = res.x / 100;
-	m_Text.setFillColor(sf::Color(0, 255, 0, 255));
+	m_Text.setFillColor(Color(0, 255, 0, 255));
 	m_Text.setString("SPACE INVADERS ++");
 
 	//https://www.dafont.com/roboto.font

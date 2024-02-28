@@ -1,6 +1,7 @@
 #include "GameUIPanel.h"
 #include <sstream>
 #include "WorldState.h"
+#include "Color.h"
 
 int WorldState::SCORE;
 int WorldState::LIVES;
@@ -13,7 +14,7 @@ GameUIPanel::GameUIPanel(Vector2i res) :
 		res.y / 12,
 		50, 255, 255, 255) // a, r, g, b
 {
-	m_Text.setFillColor(sf::Color(0, 255, 0, 255));
+	m_Text.setFillColor(Color(0, 255, 0, 255));
 	m_Text.setString("Score: 0 Lives: 3 Wave: 1");
 	m_Font.loadFromFile("fonts/Roboto-Bold.ttf");
 	m_Text.setFont(m_Font);

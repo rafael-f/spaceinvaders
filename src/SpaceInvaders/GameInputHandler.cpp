@@ -1,27 +1,29 @@
 #include "GameInputHandler.h"
 #include "SoundEngine.h"
 #include "GameScreen.h"
+#include "Joystick.h"
+#include "Keyboard.h"
 
 class BulletSpawner;
 
 void GameInputHandler::initialize()
 {
-	m_PUC = static_pointer_cast<PlayerUpdateComponent>(getPointerToScreenManagerRemoteControl()->shareGameObjectSharer().findFirstObjectWithTag("Player").getComponentByTypeAndSpecificType("update", "player"));
+	m_PUC = std::static_pointer_cast<PlayerUpdateComponent>(getPointerToScreenManagerRemoteControl()->shareGameObjectSharer().findFirstObjectWithTag("Player").getComponentByTypeAndSpecificType("update", "player"));
 
 	m_PTC = getPointerToScreenManagerRemoteControl()->shareGameObjectSharer().findFirstObjectWithTag("Player").getTransformComponent();
 }
 
 void GameInputHandler::handleGamepad()
 {
-	if (!sf::Joystick::isConnected(0))
+	if (!Joystick::isConnected(0))
 	{
 		return;
 	}
 
 	float deadZone = 10.0f;
 
-	float x = Joystick::getAxisPosition(0, sf::Joystick::X);
-	float y = Joystick::getAxisPosition(0, sf::Joystick::Y);
+	float x = Joystick::getAxisPosition(0, Joystick::X);
+	float y = Joystick::getAxisPosition(0, Joystick::Y);
 
 	if (x < deadZone && x > -deadZone)
 	{
