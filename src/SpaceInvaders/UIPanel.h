@@ -1,11 +1,10 @@
 #pragma once
 #include "Button.h"
 #include "Vector2i.h"
-#include <GLFW/glfw3.h>
-#include <string>
 #include "View.h"
-#include <vector>
 #include <memory>
+#include <string>
+#include <vector>
 
 class UIPanel
 {

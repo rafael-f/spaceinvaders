@@ -1,4 +1,5 @@
 #pragma once
+#include "Keyboard.h"
 
 class KeyEvent
 {

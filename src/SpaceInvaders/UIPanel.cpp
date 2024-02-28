@@ -1,5 +1,5 @@
-#include "UIPanel.h"
 #include "Color.h"
+#include "UIPanel.h"
 
 UIPanel::UIPanel(Vector2i res, int x, int y, float width, float height,	int alpha, int red, int green, int blue)
 {

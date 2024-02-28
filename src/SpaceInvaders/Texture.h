@@ -5,6 +5,8 @@
 class Texture
 {
 public:
+	Texture() = default; // todo shouldn't be needed
+
 	explicit Texture(const std::string& path);
 	~Texture();
 
