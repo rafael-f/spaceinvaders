@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-static class ObjectTags
+class ObjectTags
 {
 public:
 	static const std::string START_OF_OBJECT;

@@ -1,19 +1,22 @@
 #pragma once
 #include "ScreenManager.h"
 #include "SoundEngine.h"
-#include <Windows.h>
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include "Vector2i.h"
+#include "RenderWindow.h"
 
 class GameEngine
 {
+public:
+	GameEngine();
+
+	void run();
+
 private:
 	Clock m_Clock;
 
-	Time m_DT;
+	Time m_DT = Time(0);
 
-	GLFWwindow* m_Window;
+	std::unique_ptr<RenderWindow> m_Window;
 
 	std::unique_ptr<ScreenManager> m_ScreenManager;
 
@@ -25,12 +28,7 @@ private:
 
 	void update();
 
-	void draw(const unsigned int& shader, const unsigned int& location, const float& r);
+	void draw();
 
-public:
 	SoundEngine m_SoundEngine;
-
-	GameEngine();
-
-	void run();
 };

@@ -1,6 +1,16 @@
 #include "Time.h"
 
-unsigned int Time::asMilliseconds()
+Time::Time(float microseconds)
+	:m_Milliseconds(microseconds)
 {
-	return 0;
+}
+
+float Time::asMilliseconds() const
+{
+	return m_Milliseconds;
+}
+
+float Time::asSeconds() const
+{
+	return m_Milliseconds / 1000;
 }

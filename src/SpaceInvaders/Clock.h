@@ -1,10 +1,18 @@
 #pragma once
 #include "Time.h"
+#include <chrono>
 
 class Clock
 {
 public:
-	Time getElapsedTime();
+	Clock();
 
-	void restart();
+	Time getElapsedTime() const;
+
+	Time restart();
+
+private:
+	long long m_Milliseconds;
+
+	long long getCurrentTimeMilliseconds() const;
 };

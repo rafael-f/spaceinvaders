@@ -3,6 +3,8 @@
 class Color
 {
 public:
+	Color();
+
 	Color(int red, int green, int blue);
 
 	Color(int red, int green, int blue, int alpha);

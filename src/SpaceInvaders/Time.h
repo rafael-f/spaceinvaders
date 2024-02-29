@@ -3,5 +3,12 @@
 class Time
 {
 public:
-	unsigned int asMilliseconds();
+	explicit Time(float milliseconds);
+
+	float asMilliseconds() const;
+
+	float asSeconds() const;
+
+private:
+	float m_Milliseconds;
 };

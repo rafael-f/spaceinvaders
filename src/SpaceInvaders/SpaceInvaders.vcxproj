@@ -140,7 +140,6 @@
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="VIdeoMode.cpp" />
     <ClCompile Include="View.cpp" />
-    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h" />
@@ -218,7 +217,6 @@
     <ClInclude Include="VertexBufferLayout.h" />
     <ClInclude Include="VideoMode.h" />
     <ClInclude Include="View.h" />
-    <ClInclude Include="Window.h" />
     <ClInclude Include="WorldState.h" />
   </ItemGroup>
   <ItemGroup>

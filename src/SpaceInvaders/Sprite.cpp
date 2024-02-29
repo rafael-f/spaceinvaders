@@ -1,10 +1,5 @@
 #include "Sprite.h"
 
-Sprite::Sprite()
-    : m_Texture("todo") // todo
-{
-}
-
 void Sprite::setTexture(const Texture& texture)
 {
     m_Texture = texture;
@@ -12,17 +7,21 @@ void Sprite::setTexture(const Texture& texture)
 
 Texture* Sprite::getTexture()
 {
-    return &m_Texture; // todo verify how good or bad this is
+    return &m_Texture;
 }
 
 void Sprite::setScale(float x, float y)
 {
+    m_Scale.x = x;
+    m_Scale.y = y;
 }
 
-void Sprite::setColor(Color color)
+void Sprite::setColor(const Color& color)
 {
+    m_Color = color;
 }
 
 void Sprite::setPosition(Vector2f position)
 {
+    m_Position = position;
 }
