@@ -10,16 +10,18 @@ public:
 
 	explicit FloatRect(float positionX, float positionY, float sizeX, float sizeY);
 
-	bool intersects(FloatRect other);
+	bool intersects(const FloatRect& other) const;
 
-	bool contains(Vector2f point);
+	bool contains(Vector2f point) const;
 
-	float x;
-	float y;
-	float z;
-	float w;
+	Vector2f getPosition() const;
+
+	Vector2f getSize() const;
+
+	void setValues(float positionX, float positionY, float sizeX, float sizeY);
 
 private:
 	Vector2f m_Position;
+
 	Vector2f m_Size;
 };

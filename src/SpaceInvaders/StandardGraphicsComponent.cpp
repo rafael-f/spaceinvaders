@@ -19,5 +19,5 @@ void StandardGraphicsComponent::initializeGraphics(std::string bitmapName, Vecto
 void StandardGraphicsComponent::draw(RenderWindow& window, std::shared_ptr<TransformComponent> t)
 {
 	m_Sprite.setPosition(t->getLocation());
-	window.draw(m_Sprite);
+	window.draw(&m_Sprite);
 }

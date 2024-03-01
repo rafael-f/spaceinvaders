@@ -7,7 +7,7 @@ class SelectScreen : public Screen
 {
 private:
 	ScreenManagerRemoteControl* m_ScreenManagerRemoteControl;
-	Texture m_BackgroundTexture;
+	Texture m_BackgroundTexture = Texture("graphics/background.png");
 	Sprite m_BackgroundSprite;
 
 public:

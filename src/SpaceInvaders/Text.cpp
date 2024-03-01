@@ -21,3 +21,7 @@ void Text::setPosition(Vector2f position)
 void Text::setFillColor(Color color)
 {
 }
+
+void Text::Draw(const Renderer& renderer)
+{
+}

@@ -14,7 +14,7 @@ private:
 	std::string m_FilePath;
 	unsigned int m_Type;
 
-	std::string ReadFile();
+	std::string ReadFile() const;
 
 	bool CompileShader();
 };

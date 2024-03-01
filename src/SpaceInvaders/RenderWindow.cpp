@@ -2,6 +2,7 @@
 #include "RenderWindow.h"
 #include <cstdlib>
 #include <Windows.h>
+#include "Texture.h"
 
 RenderWindow::RenderWindow()
 {
@@ -29,9 +30,9 @@ RenderWindow::RenderWindow()
 	GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 }
 
-void RenderWindow::draw(Drawable drawable)
+void RenderWindow::draw(Drawable* drawable)
 {
-
+	drawable->Draw(m_Renderer);
 }
 
 Vector2f RenderWindow::mapPixelToCoords(Vector2i pixel, const View& view)

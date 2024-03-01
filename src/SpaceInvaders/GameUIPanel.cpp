@@ -28,5 +28,5 @@ void GameUIPanel::draw(RenderWindow& window)
 	std::stringstream ss;
 	ss << "Score: " << WorldState::SCORE << " Lives: " << WorldState::LIVES << " Wave: " << WorldState::WAVE_NUMBER;
 	m_Text.setString(ss.str());
-	window.draw(m_Text);
+	window.draw(&m_Text);
 }

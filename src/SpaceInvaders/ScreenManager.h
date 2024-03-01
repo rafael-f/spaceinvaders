@@ -2,16 +2,16 @@
 #include "BitmapStore.h"
 #include "GameScreen.h"
 #include "LevelManager.h"
+#include "Screen.h"
 #include "ScreenManagerRemoteControl.h"
 #include "SelectScreen.h"
 #include <iostream>
 #include <map>
-#include "Screen.h"
 
 class ScreenManager : public ScreenManagerRemoteControl
 {
 private:
-	std::map <std::string, std::unique_ptr<Screen>> m_Screens;
+	std::map<std::string, std::unique_ptr<Screen>> m_Screens;
 
 	LevelManager m_LevelManager;
 protected:
@@ -45,7 +45,7 @@ public:
 		return m_LevelManager.getGameObjects();
 	}
 
-	GameObjectSharer& shareGameObjectSharer()
+	GameObjectSharer& shareGameObjectSharer() override
 	{
 		return m_LevelManager;
 	}

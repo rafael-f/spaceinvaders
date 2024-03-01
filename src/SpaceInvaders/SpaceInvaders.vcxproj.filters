@@ -226,9 +226,6 @@
     <ClInclude Include="FloatRect.h">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClInclude>
     <ClInclude Include="Color.h">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClInclude>
@@ -427,9 +424,6 @@
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
     <ClCompile Include="FloatRect.cpp">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
     <ClCompile Include="Joystick.cpp">

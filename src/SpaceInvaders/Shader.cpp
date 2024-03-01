@@ -3,7 +3,7 @@
 #include "Renderer.h"
 
 Shader::Shader(unsigned int type, const std::string& filepath)
-	:m_Type(type), m_FilePath(filepath), m_RendererID(0)
+	:m_RendererID(0), m_FilePath(filepath), m_Type(type)
 {
 	CompileShader();
 }
@@ -13,7 +13,7 @@ Shader::~Shader()
 	GLCall(glDeleteShader(m_RendererID));
 }
 
-std::string Shader::ReadFile()
+std::string Shader::ReadFile() const
 {
 	std::ifstream file_stream(m_FilePath);
 

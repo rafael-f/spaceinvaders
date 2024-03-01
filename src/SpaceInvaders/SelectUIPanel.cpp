@@ -39,5 +39,5 @@ void SelectUIPanel::draw(RenderWindow& window)
 {
 	show();
 	UIPanel::draw(window);
-	window.draw(m_Text);
+	window.draw(&m_Text);
 }

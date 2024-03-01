@@ -8,13 +8,18 @@ class View
 public:
 	void setSize(Vector2f size);
 
-	void setSize(int x, int y);
+	void setSize(float x, float y);
 
-	void setCenter(int x, int y);
+	void setCenter(float x, float y);
 
 	void setCenter(Vector2f center);
 
-	void setViewport(FloatRect viewport);
+	void setViewport(const FloatRect& viewport);
 
-	Vector2i getSize();
+	Vector2f getSize() const;
+
+private:
+	Vector2f m_Size = Vector2f(1.0f, 1.0f);
+	Vector2f m_Center = Vector2f(0.0f, 0.0f);
+	FloatRect m_Viewport = FloatRect(0.0f, 0.0f, 1.0f, 1.0f);
 };

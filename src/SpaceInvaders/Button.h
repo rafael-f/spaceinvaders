@@ -21,5 +21,5 @@ public:
 
 	FloatRect m_Collider;
 
-	void draw(RenderWindow& window) const;
+	void draw(RenderWindow& window);
 };

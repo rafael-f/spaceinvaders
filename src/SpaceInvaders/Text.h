@@ -17,4 +17,7 @@ public:
 	void setPosition(Vector2f position);
 
 	void setFillColor(Color color);
+
+	// Inherited via Drawable
+	void Draw(const Renderer& renderer) override;
 };

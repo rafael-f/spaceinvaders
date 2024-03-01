@@ -147,7 +147,7 @@ void GameScreen::draw(RenderWindow& window)
 {
 	// Change to this screen's view to draw
 	window.setView(m_View);
-	window.draw(m_BackgroundSprite);
+	window.draw(&m_BackgroundSprite);
 
 	// Draw the GameObject instances
 	auto it = m_ScreenManagerRemoteControl->getGameObjects().begin();

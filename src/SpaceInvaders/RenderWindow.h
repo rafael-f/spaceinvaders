@@ -13,7 +13,7 @@ class RenderWindow
 public:
 	RenderWindow();
 
-	void draw(Drawable drawable);
+	void draw(Drawable* drawable);
 
 	Vector2f mapPixelToCoords(Vector2i pixel, const View& view);
 
