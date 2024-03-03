@@ -1,6 +1,7 @@
 #include "SelectScreen.h"
 #include "SelectUIPanel.h"
 #include "SelectInputHandler.h"
+#include <Windows.h>
 
 SelectScreen::SelectScreen(ScreenManagerRemoteControl* smrc, Vector2i res)
 	:m_ScreenManagerRemoteControl(smrc)
@@ -13,6 +14,11 @@ SelectScreen::SelectScreen(ScreenManagerRemoteControl* smrc, Vector2i res)
 	m_BackgroundSprite.setTexture(m_BackgroundTexture);
 
 	auto textureSize = m_BackgroundSprite.getTexture()->getSize();
+
+	int x = GetSystemMetrics(SM_CXSCREEN);
+	int y = GetSystemMetrics(SM_CYSCREEN);
+	m_View.setSize(x, y);
+	m_View.setCenter(x / 2, y / 2);
 
 	m_BackgroundSprite.setScale(float(m_View.getSize().x) / static_cast<float>(textureSize.x), float(m_View.getSize().y) / static_cast<float>(textureSize.y));
 }

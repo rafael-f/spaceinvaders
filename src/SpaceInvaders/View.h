@@ -19,7 +19,12 @@ public:
 	Vector2f getSize() const;
 
 private:
-	Vector2f m_Size = Vector2f(1.0f, 1.0f);
-	Vector2f m_Center = Vector2f(0.0f, 0.0f);
+	// The size of the view determines the size of it's content.
+	Vector2f m_Size = Vector2f(1000.0f, 1000.0f);
+
+	// The center of the view determines the relative center of where it's content will be aligned.
+	Vector2f m_Center = Vector2f(500.0f, 500.0f);
+
+	// The viewport of the view determines where the view will be drawn inside the window.
 	FloatRect m_Viewport = FloatRect(0.0f, 0.0f, 1.0f, 1.0f);
 };

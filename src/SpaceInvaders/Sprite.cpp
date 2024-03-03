@@ -4,16 +4,7 @@
 
 Sprite::Sprite()
 {
-	m_Shader.AddShader(GL_VERTEX_SHADER, "VertexShader.hlsl");
-	m_Shader.AddShader(GL_FRAGMENT_SHADER, "PixelShader.hlsl");
-	m_Shader.CreateShader();
-
-	unsigned int indices[] = {
-		0, 1, 2,
-		2, 3, 0
-	};
-
-	m_IndexBuffer = IndexBuffer(indices, 6);
+	
 }
 
 void Sprite::setTexture(const Texture& texture)
@@ -52,6 +43,17 @@ void Sprite::Draw(const Renderer& renderer)
 		 0.5f,  0.5f, 1.0f, 1.0f,
 		-0.5f,  0.5f, 0.0f, 1.0f
 	};
+
+	m_Shader.AddShader(GL_VERTEX_SHADER, "VertexShader.hlsl");
+	m_Shader.AddShader(GL_FRAGMENT_SHADER, "PixelShader.hlsl");
+	m_Shader.CreateShader();
+
+	unsigned int indices[] = {
+		0, 1, 2,
+		2, 3, 0
+	};
+
+	m_IndexBuffer = IndexBuffer(indices, 6);
 
 	unsigned int vao;
 	GLCall(glGenVertexArrays(1, &vao));
