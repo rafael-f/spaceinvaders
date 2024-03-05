@@ -26,9 +26,6 @@
     <Filter Include="Source Files\Engine\Utils">
       <UniqueIdentifier>{2d3ad2eb-0a36-48ab-a019-8d459118ae93}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Shaders">
-      <UniqueIdentifier>{04b2fda2-5fa3-46b6-a206-a1ac0abac083}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Engine\Renderer">
       <UniqueIdentifier>{78c56cc7-4a04-49b5-b1c6-c39bfa63248b}</UniqueIdentifier>
     </Filter>
@@ -37,6 +34,21 @@
     </Filter>
     <Filter Include="Source Files\Engine\stubs">
       <UniqueIdentifier>{d0f4f4ab-12bf-446b-97a1-3cf5a9a7996d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{1ef003df-7670-4441-91be-01de0fc96fa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{cc794f93-71c3-4285-bd1d-5cb0b6077593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Graphics">
+      <UniqueIdentifier>{8b6702a3-2616-4c36-b2b9-ed46a8d93be9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Sound">
+      <UniqueIdentifier>{cfdb14d9-3436-44ba-85ff-b7ae2a677925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Fonts">
+      <UniqueIdentifier>{cde7d755-3f6f-4e03-88ec-dc407c7966b9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -178,9 +190,6 @@
     <ClInclude Include="Vector2i.h">
       <Filter>Source Files\Engine\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Source Files\Engine\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderProgram.h">
       <Filter>Source Files\Engine\Renderer</Filter>
     </ClInclude>
@@ -267,6 +276,9 @@
     </ClInclude>
     <ClInclude Include="VideoMode.h">
       <Filter>Source Files\Engine\stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>Source Files\Engine\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -375,9 +387,6 @@
     <ClCompile Include="VertexArray.cpp">
       <Filter>Source Files\Engine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files\Engine\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Source Files\Engine\Renderer</Filter>
     </ClCompile>
@@ -456,13 +465,74 @@
     <ClCompile Include="Keyboard.cpp">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
+      <Filter>Source Files\Engine\Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="PixelShader.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </Text>
-    <Text Include="VertexShader.hlsl">
-      <Filter>Source Files\Shaders</Filter>
-    </Text>
+    <Image Include="graphics\invader1.png">
+      <Filter>Resource Files\Graphics</Filter>
+    </Image>
+    <Image Include="graphics\bullet.png">
+      <Filter>Resource Files\Graphics</Filter>
+    </Image>
+    <Image Include="graphics\background.png">
+      <Filter>Resource Files\Graphics</Filter>
+    </Image>
+    <Image Include="graphics\playership.png">
+      <Filter>Resource Files\Graphics</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="world\level1" />
+    <None Include="sound\click.ogg">
+      <Filter>Resource Files\Sound</Filter>
+    </None>
+    <None Include="sound\invaderexplode.ogg">
+      <Filter>Resource Files\Sound</Filter>
+    </None>
+    <None Include="sound\playerexplode.ogg">
+      <Filter>Resource Files\Sound</Filter>
+    </None>
+    <None Include="sound\shoot.ogg">
+      <Filter>Resource Files\Sound</Filter>
+    </None>
+    <None Include="shaders\particle.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="shaders\particle.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="shaders\post_processing.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="shaders\post_processing.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="shaders\sprite.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="shaders\sprite.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="shaders\text_2d.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="shaders\text_2d.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fonts\Roboto-Bold.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="shaders\PixelShader.hlsl">
+      <Filter>Resource Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\VertexShader.hlsl">
+      <Filter>Resource Files\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

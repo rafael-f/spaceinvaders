@@ -1,5 +1,6 @@
 #include "ShaderProgram.h"
 #include "Renderer.h"
+#include <iostream>
 
 ShaderProgram::ShaderProgram()
 {
@@ -9,24 +10,6 @@ ShaderProgram::ShaderProgram()
 ShaderProgram::~ShaderProgram()
 {
 	GLCall(glDeleteProgram(m_RendererID));
-}
-
-// todo maybe read type from shader first line?
-void ShaderProgram::AddShader(unsigned int type, const std::string& filename)
-{
-	//if (m_Shaders.find(filename) == m_Shaders.end())
-	//{
-	//	m_Shaders.emplace(filename, type, filename);
-	//}
-	//else
-	//{
-	//	// todo log or error?
-	//}
-	Shader shader(type, filename);
-
-	m_Shaders.push_back(shader);
-
-	GLCall(glAttachShader(m_RendererID, shader.GetID()));
 }
 
 void ShaderProgram::SetUniform1i(const std::string& name, int value)
@@ -53,9 +36,10 @@ int ShaderProgram::GetUniformLocation(const std::string& name)
 	else
 	{
 		GLCall(int location = glGetUniformLocation(m_RendererID, name.c_str()));
+
 		if (location == -1)
 		{
-			// todo print error
+			std::cout << "ERROR, ShaderProgram::GetUniformLocation could not find " << name << std::endl;
 		}
 
 		m_Locations[name] = location;
@@ -64,22 +48,47 @@ int ShaderProgram::GetUniformLocation(const std::string& name)
 	}
 }
 
-void ShaderProgram::CreateShader()
+void ShaderProgram::Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource)
 {
-	//for (const auto& shader : m_Shaders)
-	//{
-	//	GLCall(glAttachShader(m_RendererID, shader.GetID()));
-	//}
+	unsigned int sVertex;
+	unsigned int sFragment;
+	unsigned int gShader;
 
-	GLCall(glLinkProgram(m_RendererID));
-	GLCall(glValidateProgram(m_RendererID));
+	// vertex Shader
+	sVertex = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(sVertex, 1, &vertexSource, nullptr);
+	glCompileShader(sVertex);
+	checkCompileErrors(sVertex, "VERTEX");
 
-	for (const auto& shader : m_Shaders)
+	// fragment Shader
+	sFragment = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(sFragment, 1, &fragmentSource, nullptr);
+	glCompileShader(sFragment);
+	checkCompileErrors(sFragment, "FRAGMENT");
+
+	// if geometry shader source code is given, also compile geometry shader
+	if (geometrySource != nullptr)
 	{
-		GLCall(glDeleteShader(shader.GetID()));
+		gShader = glCreateShader(GL_GEOMETRY_SHADER);
+		glShaderSource(gShader, 1, &geometrySource, nullptr);
+		glCompileShader(gShader);
+		checkCompileErrors(gShader, "GEOMETRY");
 	}
 
-	//m_Shaders.clear(); // todo check for leaks
+	// shader program
+	m_RendererID = glCreateProgram();
+	glAttachShader(m_RendererID, sVertex);
+	glAttachShader(m_RendererID, sFragment);
+	if (geometrySource != nullptr)
+		glAttachShader(m_RendererID, gShader);
+	glLinkProgram(m_RendererID);
+	checkCompileErrors(m_RendererID, "PROGRAM");
+
+	// delete the shaders as they're linked into our program now and no longer necessary
+	glDeleteShader(sVertex);
+	glDeleteShader(sFragment);
+	if (geometrySource != nullptr)
+		glDeleteShader(gShader);
 }
 
 void ShaderProgram::Bind() const
@@ -90,4 +99,33 @@ void ShaderProgram::Bind() const
 void ShaderProgram::Unbind() const
 {
 	GLCall(glUseProgram(0));
+}
+
+void ShaderProgram::checkCompileErrors(unsigned int object, const std::string& type) const
+{
+	int success;
+	char infoLog[1024];
+
+	if (type != "PROGRAM")
+	{
+		glGetShaderiv(object, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			glGetShaderInfoLog(object, 1024, NULL, infoLog);
+			std::cout << "| ERROR::SHADER: Compile-time error: Type: " << type << "\n"
+				<< infoLog << "\n -- --------------------------------------------------- -- "
+				<< std::endl;
+		}
+	}
+	else
+	{
+		glGetProgramiv(object, GL_LINK_STATUS, &success);
+		if (!success)
+		{
+			glGetProgramInfoLog(object, 1024, NULL, infoLog);
+			std::cout << "| ERROR::Shader: Link-time error: Type: " << type << "\n"
+				<< infoLog << "\n -- --------------------------------------------------- -- "
+				<< std::endl;
+		}
+	}
 }

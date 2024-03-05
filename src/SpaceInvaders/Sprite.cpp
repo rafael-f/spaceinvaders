@@ -2,12 +2,9 @@
 #include "VertexBufferLayout.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-Sprite::Sprite()
+Sprite::Sprite(ShaderProgram& shader)
+    :m_Shader(shader)
 {
-	m_Shader.AddShader(GL_VERTEX_SHADER, "VertexShader.hlsl");
-	m_Shader.AddShader(GL_FRAGMENT_SHADER, "PixelShader.hlsl");
-	m_Shader.CreateShader();
-
 	unsigned int indices[] = {
 		0, 1, 2,
 		2, 3, 0

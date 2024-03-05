@@ -44,7 +44,6 @@ public:
 	template<typename T>
 	void Push(unsigned int count)
 	{
-		//static_assert(false);
 		std::runtime_error("void Push(unsigned int count)");
 	}
 

@@ -8,7 +8,7 @@
 class Sprite : public Drawable
 {
 public:
-	Sprite();
+	Sprite(ShaderProgram& shader);
 
 	void setTexture(const Texture& texture);
 

@@ -12,6 +12,9 @@ void GameEngine::run()
 	{
 		m_DT = m_Clock.restart();
 		m_FPS = m_DT.asSeconds();
+
+		glfwPollEvents();
+
 		handleInput();
 		update();
 		draw();
@@ -37,6 +40,4 @@ void GameEngine::draw()
 	m_ScreenManager->draw(*m_Window);
 
 	glfwSwapBuffers(m_Window->getGLFWwindow());
-
-	glfwPollEvents();
 }
