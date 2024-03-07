@@ -6,9 +6,9 @@
 GameEngine::GameEngine()
 {
 	m_Window = std::make_unique<RenderWindow>();
-	m_ScreenManager = std::make_unique<ScreenManager>(m_Window->getResolution());
 
 	ShaderManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
+	ShaderManager::LoadShader("shaders/button.vs", "shaders/button.frag", nullptr, "button");
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(m_Window->getResolution().x), static_cast<float>(m_Window->getResolution().y), 0.0f, -1.0f, 1.0f);
 	
 	ShaderProgram spriteShader = ShaderManager::GetShader("sprite");
@@ -16,6 +16,13 @@ GameEngine::GameEngine()
 	spriteShader.SetUniform1i("image", 0);
 	spriteShader.SetUniformMat4f("projection", projection);
 	spriteShader.Unbind();
+
+	ShaderProgram buttonShader = ShaderManager::GetShader("button");
+	buttonShader.Bind();
+	buttonShader.SetUniformMat4f("projection", projection);
+	buttonShader.Unbind();
+
+	m_ScreenManager = std::make_unique<ScreenManager>(m_Window->getResolution());
 }
 
 void GameEngine::run()

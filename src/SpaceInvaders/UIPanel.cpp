@@ -24,9 +24,9 @@ std::vector<std::shared_ptr<Button>> UIPanel::getButtons()
 	return m_Buttons;
 }
 
-void UIPanel::addButton(float x, float y, int width, int height, int red, int green, int blue, std::string label)
+void UIPanel::addButton(float x, float y, int width, int height, Color color, std::string label)
 {
-	m_Buttons.push_back(std::make_shared<Button>(Vector2f(x, y), width, height, red, green, blue, label));
+	m_Buttons.push_back(std::make_shared<Button>(Vector2f(x, y), width, height, color, label));
 }
 
 void UIPanel::draw(RenderWindow& window)

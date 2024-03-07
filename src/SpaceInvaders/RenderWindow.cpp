@@ -4,7 +4,10 @@
 #include <Windows.h>
 #include "Texture.h"
 
-void framebufferSizeCallback(GLFWwindow* window, int width, int height);
+void framebufferSizeCallback(GLFWwindow* window, int width, int height)
+{
+	GLCall(glViewport(0, 0, width, height));
+}
 
 RenderWindow::RenderWindow()
 {
@@ -14,13 +17,13 @@ RenderWindow::RenderWindow()
 		std::exit(-1);
 	}
 
-	//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	//glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-//#ifdef __APPLE__
-	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-//#endif
-	//glfwWindowHint(GLFW_RESIZABLE, false);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#ifdef __APPLE__
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+	glfwWindowHint(GLFW_RESIZABLE, false);
 
 	m_Resolution.x = GetSystemMetrics(SM_CXSCREEN);
 	m_Resolution.y = GetSystemMetrics(SM_CYSCREEN);
@@ -94,9 +97,4 @@ void RenderWindow::clear() const
 bool RenderWindow::shouldClose()
 {
 	return glfwWindowShouldClose(m_Window);
-}
-
-void framebufferSizeCallback(GLFWwindow* window, int width, int height)
-{
-	GLCall(glViewport(0, 0, width, height));
 }

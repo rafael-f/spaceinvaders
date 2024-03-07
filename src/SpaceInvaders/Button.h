@@ -9,17 +9,17 @@
 
 class Button
 {
-private:
-	RectangleShape m_Button;
-	Text m_ButtonText;
-	Font m_Font;
-
 public:
-	Button(Vector2f position, float width, float height, int red, int green, int blue, const std::string& text);
+	Button(Vector2f position, float width, float height, Color color, const std::string& text);
 	
 	std::string m_Text;
 
 	FloatRect m_Collider;
 
 	void draw(RenderWindow& window);
+
+private:
+	RectangleShape m_Button;
+	Text m_ButtonText;
+	Font m_Font;
 };

@@ -521,6 +521,12 @@
     <None Include="shaders\text_2d.vs">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="shaders\button.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="shaders\button.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\Roboto-Bold.ttf">

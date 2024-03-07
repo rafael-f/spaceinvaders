@@ -4,7 +4,6 @@
 Texture::Texture(const std::string& path)
 	: m_FilePath(path)
 {
-	stbi_set_flip_vertically_on_load(1);
 	const int numberOfChannels = 4; // RBGA
 	m_LocalBuffer = stbi_load(path.c_str(), &m_Width, &m_Height, &m_BPP, numberOfChannels);
 
@@ -27,7 +26,7 @@ Texture::Texture(const std::string& path)
 
 Texture::~Texture()
 {
-	GLCall(glDeleteTextures(1, &m_RendererID));
+	//GLCall(glDeleteTextures(1, &m_RendererID));
 }
 
 void Texture::Bind(unsigned int slot)

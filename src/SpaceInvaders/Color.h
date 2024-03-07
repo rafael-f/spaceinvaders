@@ -12,6 +12,8 @@ public:
 
 	glm::vec3 getRGB();
 
+	glm::vec4 getRGBA();
+
 private:
 	int m_Red;
 	int m_Green;

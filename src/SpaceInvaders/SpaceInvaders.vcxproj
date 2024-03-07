@@ -230,6 +230,8 @@
     <Image Include="graphics\playership.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shaders\button.frag" />
+    <None Include="shaders\button.vs" />
     <None Include="shaders\particle.frag" />
     <None Include="shaders\particle.vs" />
     <None Include="shaders\post_processing.frag" />

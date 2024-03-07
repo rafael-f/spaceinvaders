@@ -21,7 +21,7 @@ protected:
 	Font m_Font;
 	Text m_Text;
 
-	void addButton(float x, float y, int width, int height, int red, int green, int blue, std::string label);
+	void addButton(float x, float y, int width, int height, Color color, std::string label);
 
 public:
 	View m_View;

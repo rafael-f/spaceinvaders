@@ -1,10 +1,10 @@
 #include "Button.h"
 
-Button::Button(Vector2f position, float width, float height, int red, int green, int blue, const std::string& text)
+Button::Button(Vector2f position, float width, float height, Color color, const std::string& text)
 	:m_Collider(position, Vector2f(width, height))
 {
 	m_Button.setPosition(position);
-	m_Button.setFillColor(Color(red, green, blue));
+	m_Button.setFillColor(color);
 	m_Button.setSize(Vector2f(width, height));
 	m_Text = "" + text;
 

@@ -20,3 +20,8 @@ glm::vec3 Color::getRGB()
 {
 	return glm::vec3(m_Red, m_Green, m_Blue);
 }
+
+glm::vec4 Color::getRGBA()
+{
+	return glm::vec4(m_Red, m_Green, m_Blue, m_Alpha);
+}

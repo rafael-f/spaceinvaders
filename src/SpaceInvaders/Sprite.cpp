@@ -64,16 +64,16 @@ void Sprite::Draw()
     model = glm::translate(model, glm::vec3(m_Position.x, m_Position.y, 0.0f));
 
     // move origin of rotation to center of quad
-    model = glm::translate(model, glm::vec3(0.5f * m_Scale.x, 0.5f * m_Scale.y, 0.0f));
+    //model = glm::translate(model, glm::vec3(0.5f * m_Size.x, 0.5f * m_Size.y, 0.0f));
 
     // then rotate
     //model = glm::rotate(model, glm::radians(rotate), glm::vec3(0.0f, 0.0f, 1.0f));
 
     // move origin back
-    model = glm::translate(model, glm::vec3(-0.5f * m_Scale.x, -0.5f * m_Scale.y, 0.0f));
+    //model = glm::translate(model, glm::vec3(-0.5f * m_Size.x, -0.5f * m_Size.y, 0.0f));
 
     // last scale
-    model = glm::scale(model, glm::vec3(m_Scale.x, m_Scale.y, 1.0f));
+    model = glm::scale(model, glm::vec3(m_Size.x, m_Size.y, 1.0f));
 
     m_Shader.SetUniformMat4f("model", model);
 

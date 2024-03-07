@@ -30,9 +30,9 @@ void SelectUIPanel::initialiseButtons()
 {
 	// Buttons are positioned relative to the top left
 	// corner of the UI panel(m_View in UIPanel)
-	addButton(m_ButtonPadding, m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), 0, 255, 0, "Play");
+	addButton(m_ButtonPadding, m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), Color(0, 255, 0, 125), "Play");
 
-	addButton(m_ButtonWidth + (m_ButtonPadding * 2), m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), 255, 0, 0, "Quit");
+	addButton(m_ButtonWidth + (m_ButtonPadding * 2), m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), Color(255, 0, 0, 125), "Quit");
 }
 
 void SelectUIPanel::draw(RenderWindow& window)

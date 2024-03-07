@@ -26,9 +26,9 @@ GameOverUIPanel::GameOverUIPanel(Vector2i res) :
 
 void GameOverUIPanel::initialiseButtons()
 {
-	addButton(m_ButtonPadding, m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), 0, 255, 0, "Play");
+	addButton(m_ButtonPadding, m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), Color(0, 255, 0, 125), "Play");
 
-	addButton(m_ButtonWidth + (m_ButtonPadding * 2), m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), 255, 0, 0, "Home");
+	addButton(m_ButtonWidth + (m_ButtonPadding * 2), m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), Color(255, 0, 0, 125), "Home");
 }
 
 void GameOverUIPanel::draw(RenderWindow& window)
