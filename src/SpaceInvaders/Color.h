@@ -1,4 +1,5 @@
 #pragma once
+#include <glm/glm.hpp>
 
 class Color
 {
@@ -8,6 +9,8 @@ public:
 	Color(int red, int green, int blue);
 
 	Color(int red, int green, int blue, int alpha);
+
+	glm::vec3 getRGB();
 
 private:
 	int m_Red;

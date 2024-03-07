@@ -15,3 +15,8 @@ Color::Color(int red, int green, int blue, int alpha)
 	:m_Red(red), m_Green(green), m_Blue(blue), m_Alpha(alpha)
 {
 }
+
+glm::vec3 Color::getRGB()
+{
+	return glm::vec3(m_Red, m_Green, m_Blue);
+}

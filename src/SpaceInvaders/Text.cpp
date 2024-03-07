@@ -22,6 +22,6 @@ void Text::setFillColor(Color color)
 {
 }
 
-void Text::Draw(const Renderer& renderer)
+void Text::Draw()
 {
 }

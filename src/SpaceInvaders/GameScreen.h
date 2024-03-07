@@ -34,7 +34,7 @@ private:
 public:
 	static bool m_GameOver;
 
-	GameScreen(ScreenManagerRemoteControl* smrc, Vector2i res);
+	GameScreen(ScreenManagerRemoteControl* smrc, Vector2i res, Sprite backgroundSprite);
 
 	void initialise() override;
 

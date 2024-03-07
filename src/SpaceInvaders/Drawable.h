@@ -4,7 +4,7 @@
 class Drawable
 {
 public:
-	virtual void Draw(const Renderer& renderer) = 0;
+	virtual void Draw() = 0;
 
 	virtual ~Drawable() = default;
 };

@@ -15,7 +15,7 @@ private:
 
 public:
 	virtual void draw(RenderWindow& window, std::shared_ptr<TransformComponent> t) = 0;
-	virtual void initializeGraphics(std::string bitmapName, Vector2f objectSize) = 0;
+	virtual void initializeGraphics(Vector2f objectSize) = 0;
 
 	std::string Component::getType()
 	{

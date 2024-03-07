@@ -9,12 +9,17 @@ ShaderProgram::ShaderProgram()
 
 ShaderProgram::~ShaderProgram()
 {
-	GLCall(glDeleteProgram(m_RendererID));
+	//GLCall(glDeleteProgram(m_RendererID));
 }
 
 void ShaderProgram::SetUniform1i(const std::string& name, int value)
 {
 	GLCall(glUniform1i(GetUniformLocation(name), value));
+}
+
+void ShaderProgram::SetUniform3f(const std::string& name, float v0, float v1, float v2)
+{
+	GLCall(glUniform3f(GetUniformLocation(name), v0, v1, v2));
 }
 
 void ShaderProgram::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)

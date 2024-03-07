@@ -10,8 +10,8 @@ GameUIPanel::GameUIPanel(Vector2i res) :
 	UIPanel(res,
 		1, // The left
 		1, // The top
-		res.x / 3, // 1/3 width screen
-		res.y / 12,
+		static_cast<float>(res.x / 3), // 1/3 width screen
+		static_cast<float>(res.y / 12),
 		50, 255, 255, 255) // a, r, g, b
 {
 	m_Text.setFillColor(Color(0, 255, 0, 255));

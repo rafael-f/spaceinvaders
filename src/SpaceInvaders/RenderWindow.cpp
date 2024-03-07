@@ -53,7 +53,7 @@ RenderWindow::RenderWindow()
 
 void RenderWindow::draw(Drawable* drawable)
 {
-	drawable->Draw(m_Renderer);
+	drawable->Draw();
 }
 
 Vector2f RenderWindow::mapPixelToCoords(Vector2i pixel, const View& view)

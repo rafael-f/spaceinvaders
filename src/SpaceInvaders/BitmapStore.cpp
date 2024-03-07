@@ -17,7 +17,7 @@ void BitmapStore::addBitmap(std::string const& filename)
 
 	if (keyValuePair == bitmapsMap.end())
 	{
-		bitmapsMap[filename] = Texture(filename);
+		bitmapsMap[filename] = Texture("graphics/" + filename + ".png");
 	}
 }
 
@@ -29,9 +29,8 @@ Texture& BitmapStore::getBitmap(std::string const& filename)
 
 	if (keyValuePair == m.end())
 	{
-#ifdef debuggingOnConsole
-		cout << "BitmapStore::getBitmap()Texture not found Crrrashh!" << endl;
-#endif
+		addBitmap(filename);
+		keyValuePair = m.find(filename);
 	}
 	
 	return keyValuePair->second;

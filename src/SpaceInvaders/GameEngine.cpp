@@ -1,9 +1,21 @@
 #include "GameEngine.h"
+#include "ShaderManager.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 GameEngine::GameEngine()
 {
 	m_Window = std::make_unique<RenderWindow>();
 	m_ScreenManager = std::make_unique<ScreenManager>(m_Window->getResolution());
+
+	ShaderManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(m_Window->getResolution().x), static_cast<float>(m_Window->getResolution().y), 0.0f, -1.0f, 1.0f);
+	
+	ShaderProgram spriteShader = ShaderManager::GetShader("sprite");
+	spriteShader.Bind();
+	spriteShader.SetUniform1i("image", 0);
+	spriteShader.SetUniformMat4f("projection", projection);
+	spriteShader.Unbind();
 }
 
 void GameEngine::run()

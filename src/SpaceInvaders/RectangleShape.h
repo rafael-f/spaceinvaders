@@ -13,5 +13,5 @@ public:
 	void setSize(Vector2f size);
 
 	// Inherited via Drawable
-	void Draw(const Renderer& renderer) override;
+	void Draw() override;
 };

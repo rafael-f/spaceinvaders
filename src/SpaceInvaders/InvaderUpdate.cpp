@@ -59,7 +59,7 @@ void InvaderUpdateComponent::initializeBulletSpawner(BulletSpawner* bulletSpawne
 	m_BulletSpawner = bulletSpawner;
 	m_RandSeed = randSeed;
 	srand(m_RandSeed);
-	m_TimeBetweenShots = (rand() % 15 + m_RandSeed);
+	m_TimeBetweenShots = static_cast<float>((rand() % 15 + m_RandSeed));
 	m_AccuracyModifier = (rand() % 2);
 	m_AccuracyModifier += 0 + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (10)));
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+// todo replace with glm::vec2
 class Vector2f
 {
 public:

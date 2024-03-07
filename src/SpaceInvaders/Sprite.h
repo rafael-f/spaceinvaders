@@ -8,31 +8,32 @@
 class Sprite : public Drawable
 {
 public:
-	Sprite(ShaderProgram& shader);
-
-	void setTexture(const Texture& texture);
+	explicit Sprite(ShaderProgram& shader, Texture& texture);
 
 	Texture* getTexture();
 
 	void setScale(float x, float y);
 
+	void setSize(float x, float y);
+
 	void setColor(const Color& color);
 
 	void setPosition(Vector2f position);
 
-	// Inherited via Drawable
-	void Draw(const Renderer& renderer) override;
+	void Draw() override;
 
 private:
-	Texture m_Texture;
+	ShaderProgram& m_Shader;
+	
+	Texture& m_Texture;
 
 	Vector2f m_Scale;
+
+	Vector2f m_Size = Vector2f(100.0f, 100.0f);
 
 	Color m_Color;
 
 	Vector2f m_Position;
 
-	ShaderProgram m_Shader;
-
-	IndexBuffer m_IndexBuffer;
+	VertexArray m_VertexArray;
 };

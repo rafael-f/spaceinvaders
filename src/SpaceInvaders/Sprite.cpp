@@ -2,20 +2,29 @@
 #include "VertexBufferLayout.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-Sprite::Sprite(ShaderProgram& shader)
-    :m_Shader(shader)
+Sprite::Sprite(ShaderProgram& shader, Texture& texture)
+    :m_Shader(shader), m_Texture(texture)
 {
-	unsigned int indices[] = {
-		0, 1, 2,
-		2, 3, 0
-	};
+    float vertices[] = {
+        // pos      // tex
+        0.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 0.0f, 0.0f, 0.0f,
 
-	m_IndexBuffer = IndexBuffer(indices, 6);
-}
+        0.0f, 1.0f, 0.0f, 1.0f,
+        1.0f, 1.0f, 1.0f, 1.0f,
+        1.0f, 0.0f, 1.0f, 0.0f
+    };
 
-void Sprite::setTexture(const Texture& texture)
-{
-    m_Texture = texture;
+    VertexBuffer vb = VertexBuffer(vertices, sizeof(vertices));
+
+    VertexBufferLayout layout;
+    layout.Push<float>(4);
+
+    m_VertexArray.AddBuffer(vb, layout);
+
+    vb.Unbind();
+    m_VertexArray.Unbind();
 }
 
 Texture* Sprite::getTexture()
@@ -29,6 +38,12 @@ void Sprite::setScale(float x, float y)
     m_Scale.y = y;
 }
 
+void Sprite::setSize(float x, float y)
+{
+    m_Size.x = x;
+    m_Size.y = y;
+}
+
 void Sprite::setColor(const Color& color)
 {
     m_Color = color;
@@ -39,44 +54,35 @@ void Sprite::setPosition(Vector2f position)
     m_Position = position;
 }
 
-void Sprite::Draw(const Renderer& renderer)
+void Sprite::Draw()
 {
-    // TODO remove opengl learning
-    float positions[] =
-    {
-        -0.5f, -0.5f, 0.0f, 0.0f,
-         0.5f, -0.5f, 1.0f, 0.0f,
-         0.5f,  0.5f, 1.0f, 1.0f,
-        -0.5f,  0.5f, 0.0f, 1.0f
-    };
-
-    unsigned int vao;
-    GLCall(glGenVertexArrays(1, &vao));
-    GLCall(glBindVertexArray(vao));
-
-    VertexArray(va);
-    VertexBuffer vb(positions, 4 * 4 * sizeof(float));
-
-    VertexBufferLayout layout;
-    layout.Push<float>(2);
-    layout.Push<float>(2);
-    va.AddBuffer(vb, layout);
-
-    glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
-
     m_Shader.Bind();
-    m_Shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
-    m_Shader.SetUniformMat4f("u_MVP", proj);
 
-    //Texture texture("graphics/background.png");
-    int textureSlot = 0;
-    m_Texture.Bind(textureSlot);
-    m_Shader.SetUniform1i("u_Texture", textureSlot);
+    glm::mat4 model = glm::mat4(1.0f);
 
-    va.Unbind();
-    m_Shader.Unbind();
-    vb.Unbind();
-    m_IndexBuffer.Unbind();
+    // first translate (transformations are: scale happens first, then rotation, and then final translation happens; reversed order)
+    model = glm::translate(model, glm::vec3(m_Position.x, m_Position.y, 0.0f));
 
-    renderer.Draw(va, m_IndexBuffer, m_Shader);
+    // move origin of rotation to center of quad
+    model = glm::translate(model, glm::vec3(0.5f * m_Scale.x, 0.5f * m_Scale.y, 0.0f));
+
+    // then rotate
+    //model = glm::rotate(model, glm::radians(rotate), glm::vec3(0.0f, 0.0f, 1.0f));
+
+    // move origin back
+    model = glm::translate(model, glm::vec3(-0.5f * m_Scale.x, -0.5f * m_Scale.y, 0.0f));
+
+    // last scale
+    model = glm::scale(model, glm::vec3(m_Scale.x, m_Scale.y, 1.0f));
+
+    m_Shader.SetUniformMat4f("model", model);
+
+    // render textured quad
+    m_Shader.SetUniform3f("spriteColor", m_Color.getRGB().x, m_Color.getRGB().y, m_Color.getRGB().z);
+
+    m_Texture.Bind(0);
+
+    m_VertexArray.Bind();
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    m_VertexArray.Unbind();
 }

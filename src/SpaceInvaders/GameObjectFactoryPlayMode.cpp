@@ -6,6 +6,8 @@
 #include "StandardGraphicsComponent.h"
 #include "TransformComponent.h"
 #include <iostream>
+#include "ShaderManager.h"
+#include "BitmapStore.h"
 
 void GameObjectFactoryPlayMode::buildGameObject(GameObjectBlueprint& bp, std::vector<GameObject>& gameObjects)
 {
@@ -35,11 +37,13 @@ void GameObjectFactoryPlayMode::buildGameObject(GameObjectBlueprint& bp, std::ve
 		}
 		else if (*it == "Standard Graphics")
 		{
-			std::shared_ptr<StandardGraphicsComponent> sgp = std::make_shared<StandardGraphicsComponent>();
+			Sprite sprite = Sprite(ShaderManager::GetShader("sprite"), BitmapStore::getBitmap(bp.getBitmapName()));
+
+			std::shared_ptr<StandardGraphicsComponent> sgp = std::make_shared<StandardGraphicsComponent>(sprite);
 
 			gameObject.addComponent(sgp);
 
-			sgp->initializeGraphics(bp.getBitmapName(), Vector2f(bp.getWidth(), bp.getHeight()));
+			sgp->initializeGraphics(Vector2f(bp.getWidth(), bp.getHeight()));
 		}
 	}
 

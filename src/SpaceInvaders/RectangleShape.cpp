@@ -18,7 +18,7 @@ void RectangleShape::setSize(Vector2f size)
 
 }
 
-void RectangleShape::Draw(const Renderer& renderer)
+void RectangleShape::Draw()
 {
 	
 }

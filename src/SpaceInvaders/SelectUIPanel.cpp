@@ -8,13 +8,13 @@ SelectUIPanel::SelectUIPanel(Vector2i res) :
 	UIPanel(res,
 		(res.x / 10) * 2, // Start 2/10 across
 		res.y / 3, // 1/3 of the resolution from the top
-		(res.x / 10) * 6, // as wide as 6/10 of the resolution
-		res.y / 3, // and as tall as 1/3 of the resolution
+		static_cast<float>((res.x / 10) * 6), // as wide as 6/10 of the resolution
+		static_cast<float>(res.y / 3), // and as tall as 1/3 of the resolution
 		50, 255, 255, 255) // a, r, g, b
 {
-	m_ButtonWidth = res.x / 20;
-	m_ButtonHeight = res.y / 20;
-	m_ButtonPadding = res.x / 100;
+	m_ButtonWidth = static_cast<float>(res.x / 20);
+	m_ButtonHeight = static_cast<float>(res.y / 20);
+	m_ButtonPadding = static_cast<float>(res.x / 100);
 	m_Text.setFillColor(Color(0, 255, 0, 255));
 	m_Text.setString("SPACE INVADERS ++");
 
@@ -30,9 +30,9 @@ void SelectUIPanel::initialiseButtons()
 {
 	// Buttons are positioned relative to the top left
 	// corner of the UI panel(m_View in UIPanel)
-	addButton(m_ButtonPadding, m_ButtonPadding, m_ButtonWidth, m_ButtonHeight, 0, 255, 0, "Play");
+	addButton(m_ButtonPadding, m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), 0, 255, 0, "Play");
 
-	addButton(m_ButtonWidth + (m_ButtonPadding * 2), m_ButtonPadding, m_ButtonWidth, m_ButtonHeight, 255, 0, 0, "Quit");
+	addButton(m_ButtonWidth + (m_ButtonPadding * 2), m_ButtonPadding, static_cast<int>(m_ButtonWidth), static_cast<int>(m_ButtonHeight), 255, 0, 0, "Quit");
 }
 
 void SelectUIPanel::draw(RenderWindow& window)

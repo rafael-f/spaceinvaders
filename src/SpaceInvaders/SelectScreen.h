@@ -7,10 +7,9 @@ class SelectScreen : public Screen
 {
 private:
 	ScreenManagerRemoteControl* m_ScreenManagerRemoteControl;
-	Texture m_BackgroundTexture = Texture("graphics/background.png");
 	Sprite m_BackgroundSprite;
 
 public:
-	SelectScreen(ScreenManagerRemoteControl* smrc, Vector2i res);
+	SelectScreen(ScreenManagerRemoteControl* smrc, Vector2i res, Sprite backgroundSprite);
 	void virtual draw(RenderWindow& window);
 };
