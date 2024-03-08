@@ -7,12 +7,14 @@ UIPanel::UIPanel(Vector2i res, int x, int y, float width, float height,	int alph
 
 	m_UIPanel.setSize(Vector2f(width, height));
 
+	m_UIPanel.setPosition(Vector2f(x, y));
+
 	m_View.setSize(Vector2f(width, height));
 
 	m_View.setCenter(width / 2, height / 2);
 
-	float viewportStartX = 1.f / (res.x / x);
-	float viewportStartY = 1.f / (res.y / y);
+	float viewportStartX = x == 0 ? 0 : 1.f / (res.x / x);
+	float viewportStartY = y == 0 ? 0 : 1.f / (res.y / y);
 	float viewportSizeX = 1.f / (res.x / width);
 	float viewportSizeY = 1.f / (res.y / height);
 
@@ -26,7 +28,9 @@ std::vector<std::shared_ptr<Button>> UIPanel::getButtons()
 
 void UIPanel::addButton(float x, float y, int width, int height, Color color, std::string label)
 {
-	m_Buttons.push_back(std::make_shared<Button>(Vector2f(x, y), width, height, color, label));
+	Vector2f position = m_UIPanel.getPosition();
+
+	m_Buttons.push_back(std::make_shared<Button>(Vector2f(x + position.x, y + position.y), width, height, color, label));
 }
 
 void UIPanel::draw(RenderWindow& window)

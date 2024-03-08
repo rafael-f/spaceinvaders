@@ -18,6 +18,8 @@ public:
 
 	Vector2f getSize() const;
 
+	void setActive();
+
 private:
 	// The size of the view determines the size of it's content.
 	Vector2f m_Size = Vector2f(1000.0f, 1000.0f);

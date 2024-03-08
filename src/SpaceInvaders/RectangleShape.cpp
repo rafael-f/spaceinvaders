@@ -32,6 +32,11 @@ void RectangleShape::setPosition(Vector2f position)
     m_Position = position;
 }
 
+Vector2f RectangleShape::getPosition()
+{
+    return m_Position;
+}
+
 void RectangleShape::setFillColor(const Color& color)
 {
     m_Color = color;
@@ -40,6 +45,11 @@ void RectangleShape::setFillColor(const Color& color)
 void RectangleShape::setSize(Vector2f size)
 {
     m_Size = size;
+}
+
+Vector2f RectangleShape::getSize()
+{
+    return m_Size;
 }
 
 void RectangleShape::Draw()

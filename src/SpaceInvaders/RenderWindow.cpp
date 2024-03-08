@@ -66,7 +66,8 @@ Vector2f RenderWindow::mapPixelToCoords(Vector2i pixel, const View& view)
 
 void RenderWindow::setView(View view)
 {
-
+	//view.setActive();
+	//glViewport(0, 0, view.getSize().x, view.getSize().y);
 }
 
 bool RenderWindow::pollEvent(Event event)

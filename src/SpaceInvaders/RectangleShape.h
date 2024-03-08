@@ -11,9 +11,13 @@ public:
 
 	void setPosition(Vector2f position);
 
+	Vector2f getPosition();
+
 	void setFillColor(const Color &color);
 
 	void setSize(Vector2f size);
+
+	Vector2f getSize();
 
 	// Inherited via Drawable
 	void Draw() override;
