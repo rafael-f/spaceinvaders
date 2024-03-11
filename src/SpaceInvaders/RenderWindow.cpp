@@ -65,7 +65,14 @@ RenderWindow::RenderWindow()
 			instance->key_callback(window, key, scancode, action, mode);
 		});
 
-	glViewport(0, 0, m_Resolution.x, m_Resolution.y);
+	int windowX, windowY;
+	glfwGetWindowPos(m_Window, &windowX, &windowY);
+
+	//int windowWidth, windowHeight;
+	//glfwGetWindowSize(window, &windowWidth, &windowHeight);
+
+	glViewport(-windowX, -windowY, m_Resolution.x, m_Resolution.y); // todo ?
+
 	GLCall(glEnable(GL_BLEND));
 	GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 }
@@ -77,7 +84,7 @@ void RenderWindow::draw(Drawable* drawable)
 
 Vector2f RenderWindow::mapPixelToCoords(Vector2i pixel, const View& view)
 {
-	return Vector2f(pixel.x, pixel.y);
+	return Vector2f(pixel.x, pixel.y); // todo
 }
 
 void RenderWindow::setView(View view)
@@ -133,14 +140,14 @@ void RenderWindow::mouse_button_callback(GLFWwindow* window, int button, int act
 
 		glfwGetCursorPos(window, &xpos, &ypos);
 
-		int windowWidth, windowHeight;
-		glfwGetWindowSize(window, &windowWidth, &windowHeight);
+		//int windowWidth, windowHeight;
+		//glfwGetWindowSize(window, &windowWidth, &windowHeight);
 
-		int windowX, windowY;
-		glfwGetWindowPos(window, &windowX, &windowY);
+		//int windowX, windowY;
+		//glfwGetWindowPos(window, &windowX, &windowY);
 
-		double mouseX = xpos + windowX;
-		double mouseY = ypos + windowY;
+		double mouseX = xpos /* + windowX*/;
+		double mouseY = ypos /* + windowY*/;
 
 		Event event;
 		event.type = Event::MouseButtonReleased;
@@ -162,7 +169,11 @@ void RenderWindow::key_callback(GLFWwindow* window, int key, int scancode, int a
 	{
 		Event event;
 		event.type = Event::KeyPressed;
-		event.key.code = Keyboard::Escape;
+		if (key == GLFW_KEY_ESCAPE)
+		{
+			event.key.code = Keyboard::Escape;
+		}
+
 		m_Events.push(event);
 	}
 

@@ -50,6 +50,9 @@
     <Filter Include="Resource Files\Fonts">
       <UniqueIdentifier>{cde7d755-3f6f-4e03-88ec-dc407c7966b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Levels">
+      <UniqueIdentifier>{87b46063-ee66-435e-87b3-44e1bb321645}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h">
@@ -484,7 +487,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="world\level1" />
     <None Include="sound\click.ogg">
       <Filter>Resource Files\Sound</Filter>
     </None>
@@ -526,6 +528,9 @@
     </None>
     <None Include="shaders\button.frag">
       <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="world\level1">
+      <Filter>Resource Files\Levels</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
