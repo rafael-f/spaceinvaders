@@ -3,6 +3,7 @@
 class VertexBuffer
 {
 public:
+	VertexBuffer() = default; // todo remove
 	VertexBuffer(const void* data, unsigned int size);
 	~VertexBuffer();
 

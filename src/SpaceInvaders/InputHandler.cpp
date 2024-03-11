@@ -30,7 +30,7 @@ void InputHandler::handleInput(RenderWindow& window, Event& event)
 
 		for (auto i = m_Buttons.begin(); i != end; ++i)
 		{
-			if ((*i)->m_Collider.contains(window.mapPixelToCoords(Mouse::getPosition(), (*getPointerToUIView()))))
+			if ((*i)->m_Collider.contains(window.mapPixelToCoords(event.mousePosition, (*getPointerToUIView()))))
 			{
 				// Capture the text of the button that was interacted
 				// with and pass it to the specialised version

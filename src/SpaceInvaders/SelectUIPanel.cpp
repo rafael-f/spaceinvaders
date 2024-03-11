@@ -19,10 +19,10 @@ SelectUIPanel::SelectUIPanel(Vector2i res) :
 	m_Text.setString("SPACE INVADERS ++");
 
 	//https://www.dafont.com/roboto.font
-	m_Font.loadFromFile("fonts/Roboto-Bold.ttf");
+	m_Font.loadFromFile("fonts/Roboto-Bold.ttf", 10); // todo size
 	m_Text.setFont(m_Font);
-	m_Text.setPosition(Vector2f(m_ButtonPadding, m_ButtonHeight + (m_ButtonPadding * 2)));
-	m_Text.setCharacterSize(160);
+	m_Text.setPosition(Vector2f(m_ButtonPadding + (res.x / 10) * 2, res.y / 3 + m_ButtonHeight + (m_ButtonPadding * 2)));
+	m_Text.setCharacterSize(16);
 	initialiseButtons();
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "KeyEvent.h"
+#include "Vector2i.h"
 
 class Event
 {
@@ -14,4 +15,6 @@ public:
     EventType type{};
 
     KeyEvent key;
+
+    Vector2i mousePosition;
 };

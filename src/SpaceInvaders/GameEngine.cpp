@@ -7,17 +7,21 @@ GameEngine::GameEngine()
 {
 	m_Window = std::make_unique<RenderWindow>();
 
-	ShaderManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
-	ShaderManager::LoadShader("shaders/button.vs", "shaders/button.frag", nullptr, "button");
+	ShaderProgram spriteShader = ShaderManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
+	ShaderProgram buttonShader = ShaderManager::LoadShader("shaders/button.vs", "shaders/button.frag", nullptr, "button");
+	ShaderProgram textShader = ShaderManager::LoadShader("shaders/text_2d.vs", "shaders/text_2d.fs", nullptr, "text");
+
+	textShader.Bind();
+	textShader.SetUniformMat4f("projection", glm::ortho(0.0f, static_cast<float>(m_Window->getResolution().x), static_cast<float>(m_Window->getResolution().y), 0.0f));
+	textShader.SetUniform1i("text", 0);
+
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(m_Window->getResolution().x), static_cast<float>(m_Window->getResolution().y), 0.0f, -1.0f, 1.0f);
 	
-	ShaderProgram spriteShader = ShaderManager::GetShader("sprite");
 	spriteShader.Bind();
 	spriteShader.SetUniform1i("image", 0);
 	spriteShader.SetUniformMat4f("projection", projection);
 	spriteShader.Unbind();
 
-	ShaderProgram buttonShader = ShaderManager::GetShader("button");
 	buttonShader.Bind();
 	buttonShader.SetUniformMat4f("projection", projection);
 	buttonShader.Unbind();

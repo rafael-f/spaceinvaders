@@ -7,6 +7,7 @@
 #include "View.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <queue>
 
 class RenderWindow
 {
@@ -19,7 +20,7 @@ public:
 
 	void setView(View view);
 
-	bool pollEvent(Event event);
+	bool pollEvent(Event& event);
 
 	void close();
 
@@ -31,10 +32,14 @@ public:
 
 	bool shouldClose();
 
+	void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+
 private:
 	Vector2i m_Resolution;
 
 	GLFWwindow* m_Window;
 
 	Renderer m_Renderer;
+
+	std::queue<Event> m_Events;
 };

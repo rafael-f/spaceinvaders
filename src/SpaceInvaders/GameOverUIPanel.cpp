@@ -17,7 +17,7 @@ GameOverUIPanel::GameOverUIPanel(Vector2i res) :
 	m_ButtonPadding = static_cast<float>(res.x / 100);
 	m_Text.setFillColor(Color(0, 255, 0, 255));// Green
 	m_Text.setString("GAME OVER!");
-	m_Font.loadFromFile("fonts/Roboto-Bold.ttf");
+	m_Font.loadFromFile("fonts/Roboto-Bold.ttf", m_ButtonPadding * .7f); // todo size
 	m_Text.setFont(m_Font);
 	m_Text.setPosition(Vector2f(m_ButtonPadding, (m_ButtonPadding * 2) + m_ButtonHeight));
 	m_Text.setCharacterSize(60);

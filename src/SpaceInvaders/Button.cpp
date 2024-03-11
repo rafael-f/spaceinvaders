@@ -9,11 +9,11 @@ Button::Button(Vector2f position, float width, float height, Color color, const 
 	m_Text = "" + text;
 
 	float textPaddingX = width / 10;
-	float textPaddingY = height / 10;
+	float textPaddingY = height / 5;
 
-	m_ButtonText.setCharacterSize(height * .7f);
+	m_ButtonText.setCharacterSize(/*height * .7f*/1.0f);
 	m_ButtonText.setString(text);
-	m_Font.loadFromFile("fonts/Roboto-Bold.ttf");
+	m_Font.loadFromFile("fonts/Roboto-Bold.ttf", height * .7f);
 	m_ButtonText.setFont(m_Font);
 	m_ButtonText.setPosition(Vector2f((position.x + textPaddingX), (position.y + textPaddingY)));
 }

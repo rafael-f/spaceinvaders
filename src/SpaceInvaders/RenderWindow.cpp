@@ -36,7 +36,10 @@ RenderWindow::RenderWindow()
 		std::exit(-1);
 	}
 
-	glfwMaximizeWindow(m_Window);
+	//glfwMaximizeWindow(m_Window);
+
+	glfwSetWindowMonitor(m_Window, glfwGetPrimaryMonitor(), 0, 0, m_Resolution.x, m_Resolution.y, GLFW_DONT_CARE);
+
 	glfwMakeContextCurrent(m_Window);
 	glfwSwapInterval(1);
 
@@ -48,6 +51,15 @@ RenderWindow::RenderWindow()
 	}
 
 	glfwSetFramebufferSizeCallback(m_Window, framebufferSizeCallback);
+
+	glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
+	{
+		// Access instance or non-static members
+		RenderWindow* instance = static_cast<RenderWindow*>(glfwGetWindowUserPointer(window));
+		instance->mouse_button_callback(window, button, action, mods);
+	});
+
+	glfwSetWindowUserPointer(m_Window, this);
 
 	glViewport(0, 0, m_Resolution.x, m_Resolution.y);
 	GLCall(glEnable(GL_BLEND));
@@ -61,7 +73,7 @@ void RenderWindow::draw(Drawable* drawable)
 
 Vector2f RenderWindow::mapPixelToCoords(Vector2i pixel, const View& view)
 {
-	return Vector2f();
+	return Vector2f(pixel.x, pixel.y);
 }
 
 void RenderWindow::setView(View view)
@@ -70,8 +82,16 @@ void RenderWindow::setView(View view)
 	//glViewport(0, 0, view.getSize().x, view.getSize().y);
 }
 
-bool RenderWindow::pollEvent(Event event)
+bool RenderWindow::pollEvent(Event& event)
 {
+	if (!m_Events.empty())
+	{
+		event = m_Events.front();
+		m_Events.pop();
+
+		return true;
+	}
+
 	return false;
 }
 
@@ -98,4 +118,22 @@ void RenderWindow::clear() const
 bool RenderWindow::shouldClose()
 {
 	return glfwWindowShouldClose(m_Window);
+}
+
+void RenderWindow::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
+	{
+		double xpos;
+		double ypos;
+
+		glfwGetCursorPos(window, &xpos, &ypos);
+
+		Event event;
+		event.type = Event::MouseButtonReleased;
+		event.mousePosition.x = xpos;
+		event.mousePosition.y = ypos;
+
+		m_Events.push(event);
+	}
 }
