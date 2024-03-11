@@ -4,11 +4,6 @@
 #include <Windows.h>
 #include "Texture.h"
 
-void framebufferSizeCallback(GLFWwindow* window, int width, int height)
-{
-	GLCall(glViewport(0, 0, width, height));
-}
-
 RenderWindow::RenderWindow()
 {
 	if (!glfwInit())
@@ -36,9 +31,9 @@ RenderWindow::RenderWindow()
 		std::exit(-1);
 	}
 
-	//glfwMaximizeWindow(m_Window);
+	glfwMaximizeWindow(m_Window);
 
-	glfwSetWindowMonitor(m_Window, glfwGetPrimaryMonitor(), 0, 0, m_Resolution.x, m_Resolution.y, GLFW_DONT_CARE);
+	//glfwSetWindowMonitor(m_Window, glfwGetPrimaryMonitor(), 0, 0, m_Resolution.x, m_Resolution.y, GLFW_DONT_CARE);
 
 	glfwMakeContextCurrent(m_Window);
 	glfwSwapInterval(1);
@@ -50,16 +45,25 @@ RenderWindow::RenderWindow()
 		std::exit(-1);
 	}
 
-	glfwSetFramebufferSizeCallback(m_Window, framebufferSizeCallback);
+	glfwSetWindowUserPointer(m_Window, this);
+
+	glfwSetFramebufferSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
+		{
+			RenderWindow* instance = static_cast<RenderWindow*>(glfwGetWindowUserPointer(window));
+			instance->framebufferSizeCallback(window, width, height);
+		});
 
 	glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
-	{
-		// Access instance or non-static members
-		RenderWindow* instance = static_cast<RenderWindow*>(glfwGetWindowUserPointer(window));
-		instance->mouse_button_callback(window, button, action, mods);
-	});
+		{
+			RenderWindow* instance = static_cast<RenderWindow*>(glfwGetWindowUserPointer(window));
+			instance->mouse_button_callback(window, button, action, mods);
+		});
 
-	glfwSetWindowUserPointer(m_Window, this);
+	glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mode)
+		{
+			RenderWindow* instance = static_cast<RenderWindow*>(glfwGetWindowUserPointer(window));
+			instance->key_callback(window, key, scancode, action, mode);
+		});
 
 	glViewport(0, 0, m_Resolution.x, m_Resolution.y);
 	GLCall(glEnable(GL_BLEND));
@@ -129,11 +133,53 @@ void RenderWindow::mouse_button_callback(GLFWwindow* window, int button, int act
 
 		glfwGetCursorPos(window, &xpos, &ypos);
 
+		int windowWidth, windowHeight;
+		glfwGetWindowSize(window, &windowWidth, &windowHeight);
+
+		int windowX, windowY;
+		glfwGetWindowPos(window, &windowX, &windowY);
+
+		double mouseX = xpos + windowX;
+		double mouseY = ypos + windowY;
+
 		Event event;
 		event.type = Event::MouseButtonReleased;
-		event.mousePosition.x = xpos;
-		event.mousePosition.y = ypos;
+		event.mousePosition.x = mouseX;
+		event.mousePosition.y = mouseY;
 
 		m_Events.push(event);
 	}
+}
+
+void RenderWindow::framebufferSizeCallback(GLFWwindow* window, int width, int height)
+{
+	GLCall(glViewport(0, 0, width, height));
+}
+
+void RenderWindow::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+	if (action == GLFW_PRESS)
+	{
+		Event event;
+		event.type = Event::KeyPressed;
+		event.key.code = Keyboard::Escape;
+		m_Events.push(event);
+	}
+
+	// when a user presses the escape key, we set the WindowShouldClose property to true, closing the application
+	/*if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
+
+	if (key >= 0 && key < 1024)
+	{
+		if (action == GLFW_PRESS)
+			Breakout.Keys[key] = true;
+		else if (action == GLFW_RELEASE)
+		{
+			Breakout.Keys[key] = false;
+			Breakout.KeysProcessed[key] = false;
+		}
+	}*/
 }

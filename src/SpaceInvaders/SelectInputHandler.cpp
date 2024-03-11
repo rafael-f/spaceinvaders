@@ -9,7 +9,7 @@ int WorldState::WAVE_NUMBER;
 void SelectInputHandler::handleKeyPressed(Event& event, RenderWindow& window)
 {
 	// Quit the game
-	if (Keyboard::isKeyPressed(Keyboard::Escape))
+	if (event.key.code == Keyboard::Escape)
 	{
 		window.close();
 	}
