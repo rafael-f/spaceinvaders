@@ -9,7 +9,7 @@ ShaderProgram::ShaderProgram()
 
 ShaderProgram::~ShaderProgram()
 {
-	//GLCall(glDeleteProgram(m_RendererID));
+	//GLCall(glDeleteProgram(m_RendererID)); todo
 }
 
 void ShaderProgram::SetUniform1i(const std::string& name, int value)

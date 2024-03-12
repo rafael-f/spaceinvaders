@@ -12,13 +12,15 @@ class InputHandler
 private:
 	Screen* m_ParentScreen;
 	std::vector<std::shared_ptr<Button>> m_Buttons;
-	View* m_PointerToUIPanelView;
 	ScreenManagerRemoteControl* m_ScreenManagerRemoteControl;
 
 public:
 	virtual ~InputHandler() = default;
 
-	void initialiseInputHandler(ScreenManagerRemoteControl* sw, std::vector<std::shared_ptr<Button>>, View* pointerToUIView, Screen* parentScreen);
+	void initialiseInputHandler(
+		ScreenManagerRemoteControl* sw,
+		std::vector<std::shared_ptr<Button>>,
+		Screen* parentScreen);
 
 	void handleInput(RenderWindow& window, Event& event);
 
@@ -29,8 +31,6 @@ public:
 	virtual void handleKeyReleased(Event& event, RenderWindow& window);
 
 	virtual void handleLeftClick(std::string& buttonInteractedWith, RenderWindow& window);
-
-	View* getPointerToUIView();
 
 	ScreenManagerRemoteControl* getPointerToScreenManagerRemoteControl();
 

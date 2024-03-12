@@ -5,7 +5,11 @@
 
 std::map<std::string, ShaderProgram> ShaderManager::Shaders;
 
-ShaderProgram ShaderManager::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
+ShaderProgram ShaderManager::LoadShader(
+    const char* vShaderFile,
+    const char* fShaderFile,
+    const char* gShaderFile,
+    const std::string& name)
 {
     Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
     return Shaders[name];

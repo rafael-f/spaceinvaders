@@ -107,9 +107,7 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="InvaderUpdate.cpp" />
     <ClCompile Include="Joystick.cpp" />
-    <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="LevelManager.cpp" />
-    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="ObjectTags.cpp" />
     <ClCompile Include="PhysicsEnginePlayMode.cpp" />
     <ClCompile Include="PlayerUpdate.cpp" />
@@ -140,7 +138,6 @@
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="VIdeoMode.cpp" />
-    <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitmapStore.h" />
@@ -183,7 +180,6 @@
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="KeyEvent.h" />
     <ClInclude Include="LevelManager.h" />
-    <ClInclude Include="Mouse.h" />
     <ClInclude Include="ObjectTags.h" />
     <ClInclude Include="PhysicsEnginePlayMode.h" />
     <ClInclude Include="PlayerUpdateComponent.h" />
@@ -217,7 +213,6 @@
     <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="VertexBufferLayout.h" />
     <ClInclude Include="VideoMode.h" />
-    <ClInclude Include="View.h" />
     <ClInclude Include="WorldState.h" />
   </ItemGroup>
   <ItemGroup>

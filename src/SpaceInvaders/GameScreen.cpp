@@ -16,7 +16,7 @@ int WorldState::NUM_INVADERS;
 int WorldState::NUM_INVADERS_AT_START;
 
 GameScreen::GameScreen(ScreenManagerRemoteControl* smrc, Vector2i res, Sprite backgroundSprite)
-	:m_BackgroundSprite(backgroundSprite), m_ScreenManagerRemoteControl(smrc)
+	:m_ScreenManagerRemoteControl(smrc), m_BackgroundSprite(backgroundSprite)
 {
 	m_GIH = std::make_shared<GameInputHandler>();
 
@@ -33,20 +33,11 @@ GameScreen::GameScreen(ScreenManagerRemoteControl* smrc, Vector2i res, Sprite ba
 	float screenRatio = static_cast<float>(VideoMode::getDesktopWidth()) / static_cast<float>(VideoMode::getDesktopHeight());
 
 	WorldState::WORLD_WIDTH = res.x;
-	WorldState::WORLD_HEIGHT = res.y;//static_cast<int>(WorldState::WORLD_WIDTH / screenRatio);
-
-	//m_View.setSize(WorldState::WORLD_WIDTH, static_cast<float>(WorldState::WORLD_HEIGHT));
-	//m_View.setCenter(Vector2f(WorldState::WORLD_WIDTH / 2, static_cast<float>(WorldState::WORLD_HEIGHT / 2)));
-
-	m_View.setSize(static_cast<float>(res.x), static_cast<float>(res.y));
-	m_View.setCenter(static_cast<float>(res.x / 2), static_cast<float>(res.y / 2));
+	WorldState::WORLD_HEIGHT = res.y;
 
 	auto textureSize = m_BackgroundSprite.getTexture()->getSize();
 
-	//m_BackgroundSprite.setScale(float(m_View.getSize().x) / static_cast<float>(textureSize.x), float(m_View.getSize().y) / static_cast<float>(textureSize.y));
-	m_BackgroundSprite.setSize(m_View.getSize().x, m_View.getSize().y);
-
-	m_BackgroundSprite.setScale(float(m_View.getSize().x) / static_cast<float>(textureSize.x), float(m_View.getSize().y) / static_cast<float>(textureSize.y));
+	m_BackgroundSprite.setSize(static_cast<float>(res.x), static_cast<float>(res.y));
 }
 
 void GameScreen::initialise()
@@ -148,8 +139,6 @@ void GameScreen::update(float fps)
 
 void GameScreen::draw(RenderWindow& window)
 {
-	// Change to this screen's view to draw
-	window.setView(m_View);
 	window.draw(&m_BackgroundSprite);
 
 	// Draw the GameObject instances

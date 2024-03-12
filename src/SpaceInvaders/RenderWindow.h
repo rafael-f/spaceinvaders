@@ -4,7 +4,6 @@
 #include "Renderer.h"
 #include "Vector2f.h"
 #include "Vector2i.h"
-#include "View.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <queue>
@@ -16,9 +15,7 @@ public:
 
 	void draw(Drawable* drawable);
 
-	Vector2f mapPixelToCoords(Vector2i pixel, const View& view);
-
-	void setView(View view);
+	Vector2f mapPixelToCoords(Vector2i pixel);
 
 	bool pollEvent(Event& event);
 

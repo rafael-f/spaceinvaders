@@ -32,12 +32,6 @@ Texture* Sprite::getTexture()
     return &m_Texture;
 }
 
-void Sprite::setScale(float x, float y)
-{
-    m_Scale.x = x;
-    m_Scale.y = y;
-}
-
 void Sprite::setSize(float x, float y)
 {
     m_Size.x = x;

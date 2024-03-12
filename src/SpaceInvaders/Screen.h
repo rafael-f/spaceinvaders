@@ -22,5 +22,4 @@ public:
 	void handleInput(RenderWindow& window);
 
 	virtual ~Screen() = default;
-	View m_View;
 };

@@ -12,6 +12,4 @@ public:
 		Down,
 		Space
 	};
-
-	static bool isKeyPressed(Keyboard::Key key);
 };

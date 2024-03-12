@@ -6,7 +6,7 @@ void Screen::initialise()
 
 void Screen::addPanel(std::unique_ptr<UIPanel> uip, ScreenManagerRemoteControl* smrc, std::shared_ptr<InputHandler> ih)
 {
-	ih->initialiseInputHandler(smrc, uip->getButtons(), &uip->m_View, this);
+	ih->initialiseInputHandler(smrc, uip->getButtons(), this);
 
 	// Use move() because otherwise
 	// the vector has a COPY which is not allowed

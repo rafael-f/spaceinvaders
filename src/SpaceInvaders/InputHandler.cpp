@@ -1,12 +1,13 @@
 #include <sstream>
 #include "InputHandler.h"
-#include "Mouse.h"
 
-void InputHandler::initialiseInputHandler(ScreenManagerRemoteControl* sw, std::vector<std::shared_ptr<Button>> buttons, View* pointerToUIView, Screen* parentScreen)
+void InputHandler::initialiseInputHandler(
+	ScreenManagerRemoteControl* sw,
+	std::vector<std::shared_ptr<Button>> buttons,
+	Screen* parentScreen)
 {
 	m_ScreenManagerRemoteControl = sw;
 	m_Buttons = buttons;
-	m_PointerToUIPanelView = pointerToUIView;
 	m_ParentScreen = parentScreen;
 }
 
@@ -30,7 +31,7 @@ void InputHandler::handleInput(RenderWindow& window, Event& event)
 
 		for (auto i = m_Buttons.begin(); i != end; ++i)
 		{
-			if ((*i)->m_Collider.contains(window.mapPixelToCoords(event.mousePosition, (*getPointerToUIView()))))
+			if ((*i)->m_Collider.contains(window.mapPixelToCoords(event.mousePosition)))
 			{
 				// Capture the text of the button that was interacted
 				// with and pass it to the specialised version
@@ -62,11 +63,6 @@ void InputHandler::handleKeyReleased(Event& event, RenderWindow& window)
 void InputHandler::handleLeftClick(std::string& buttonInteractedWith, RenderWindow& window)
 {
 	// Do nothing unless handled by a derived class
-}
-
-View* InputHandler::getPointerToUIView()
-{
-	return m_PointerToUIPanelView;
 }
 
 ScreenManagerRemoteControl* InputHandler::getPointerToScreenManagerRemoteControl()

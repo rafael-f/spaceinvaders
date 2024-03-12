@@ -223,9 +223,6 @@
     <ClInclude Include="IMGUI\imstb_truetype.h">
       <Filter>Source Files\IMGUI</Filter>
     </ClInclude>
-    <ClInclude Include="View.h">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClInclude>
     <ClInclude Include="RectangleShape.h">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClInclude>
@@ -260,9 +257,6 @@
       <Filter>Source Files\Engine\stubs</Filter>
     </ClInclude>
     <ClInclude Include="Event.h">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClInclude>
-    <ClInclude Include="Mouse.h">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClInclude>
     <ClInclude Include="KeyEvent.h">
@@ -420,9 +414,6 @@
     <ClCompile Include="IMGUI\imgui_widgets.cpp">
       <Filter>Source Files\IMGUI</Filter>
     </ClCompile>
-    <ClCompile Include="View.cpp">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClCompile>
     <ClCompile Include="RectangleShape.cpp">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
@@ -453,9 +444,6 @@
     <ClCompile Include="RenderWindow.cpp">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
-    <ClCompile Include="Mouse.cpp">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClCompile>
     <ClCompile Include="Clock.cpp">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
@@ -463,9 +451,6 @@
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
     <ClCompile Include="VIdeoMode.cpp">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClCompile>
-    <ClCompile Include="Keyboard.cpp">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
     <ClCompile Include="ShaderManager.cpp">

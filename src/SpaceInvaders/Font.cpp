@@ -35,14 +35,12 @@ void Font::loadFromFile(std::string file, unsigned int fontSize)
     // then for the first 128 ASCII characters, pre-load/compile their characters and store them
     for (GLubyte c = 0; c < 128; c++)
     {
-        // load character glyph 
         if (FT_Load_Char(face, c, FT_LOAD_RENDER))
         {
             std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
             continue;
         }
 
-        // generate texture
         unsigned int texture;
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
@@ -59,13 +57,11 @@ void Font::loadFromFile(std::string file, unsigned int fontSize)
             face->glyph->bitmap.buffer
         );
 
-        // set texture options
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-        // now store character for later use
         Character character = {
             texture,
             glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
@@ -77,7 +73,7 @@ void Font::loadFromFile(std::string file, unsigned int fontSize)
     }
 
     glBindTexture(GL_TEXTURE_2D, 0);
-    // destroy FreeType once we're finished
+
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
 }

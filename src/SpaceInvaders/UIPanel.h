@@ -1,7 +1,6 @@
 #pragma once
 #include "Button.h"
 #include "Vector2i.h"
-#include "View.h"
 #include <memory>
 #include <string>
 #include <vector>
@@ -24,8 +23,6 @@ protected:
 	void addButton(float x, float y, int width, int height, Color color, std::string label);
 
 public:
-	View m_View;
-
 	UIPanel(Vector2i res, int x, int y, float width, float height, int alpha, int red, int green, int blue);
 
 	std::vector<std::shared_ptr<Button>> getButtons();

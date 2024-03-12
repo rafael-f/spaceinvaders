@@ -82,15 +82,9 @@ void RenderWindow::draw(Drawable* drawable)
 	drawable->Draw();
 }
 
-Vector2f RenderWindow::mapPixelToCoords(Vector2i pixel, const View& view)
+Vector2f RenderWindow::mapPixelToCoords(Vector2i pixel)
 {
 	return Vector2f(pixel.x, pixel.y); // todo
-}
-
-void RenderWindow::setView(View view)
-{
-	//view.setActive();
-	//glViewport(0, 0, view.getSize().x, view.getSize().y);
 }
 
 bool RenderWindow::pollEvent(Event& event)
