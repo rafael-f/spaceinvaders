@@ -2,6 +2,7 @@
 #include "Time.h"
 #include <chrono>
 
+// todo use from glfw?
 class Clock
 {
 public:

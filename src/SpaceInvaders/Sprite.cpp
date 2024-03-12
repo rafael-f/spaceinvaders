@@ -54,24 +54,12 @@ void Sprite::Draw()
 
     glm::mat4 model = glm::mat4(1.0f);
 
-    // first translate (transformations are: scale happens first, then rotation, and then final translation happens; reversed order)
     model = glm::translate(model, glm::vec3(m_Position.x, m_Position.y, 0.0f));
 
-    // move origin of rotation to center of quad
-    //model = glm::translate(model, glm::vec3(0.5f * m_Size.x, 0.5f * m_Size.y, 0.0f));
-
-    // then rotate
-    //model = glm::rotate(model, glm::radians(rotate), glm::vec3(0.0f, 0.0f, 1.0f));
-
-    // move origin back
-    //model = glm::translate(model, glm::vec3(-0.5f * m_Size.x, -0.5f * m_Size.y, 0.0f));
-
-    // last scale
     model = glm::scale(model, glm::vec3(m_Size.x, m_Size.y, 1.0f));
 
     m_Shader.SetUniformMat4f("model", model);
 
-    // render textured quad
     m_Shader.SetUniform3f("spriteColor", m_Color.getRGB().x, m_Color.getRGB().y, m_Color.getRGB().z);
 
     m_Texture.Bind(0);

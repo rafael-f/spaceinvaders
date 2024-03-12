@@ -5,6 +5,7 @@
 #include "Vector2f.h"
 #include "ShaderProgram.h"
 
+// Quad with texture
 class Sprite : public Drawable
 {
 public:

@@ -5,11 +5,7 @@
 
 void StandardGraphicsComponent::initializeGraphics(Vector2f objectSize)
 {
-	auto textureSize = m_Sprite.getTexture()->getSize();
-
-	//m_Sprite.setScale(float(objectSize.x) / textureSize.x, float(objectSize.y) / textureSize.y);
-
-	m_Sprite.setSize(textureSize.x * objectSize.x, textureSize.y * objectSize.y);// float(objectSize.x) / textureSize.x, float(objectSize.y) / textureSize.y);
+	m_Sprite.setSize(objectSize.x, objectSize.y);
 
 	m_Sprite.setColor(Color(0, 255, 0));
 }

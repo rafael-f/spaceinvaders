@@ -3,6 +3,7 @@
 #include "VertexBufferLayout.h"
 #include "Font.h"
 
+// todo, get properly sized text
 Text::Text()
 {
     m_VertexArray.Bind();

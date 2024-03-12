@@ -7,7 +7,9 @@
 #include "BulletUpdateComponent.h"
 #include "FloatRect.h"
 
-void PhysicsEnginePlayMode::detectInvaderCollisions(std::vector<GameObject>& objects, const std::vector<int>& bulletPositions)
+void PhysicsEnginePlayMode::detectInvaderCollisions(
+	std::vector<GameObject>& objects,
+	const std::vector<int>& bulletPositions)
 {
 	Vector2f offScreen(-1, -1);
 
@@ -15,28 +17,42 @@ void PhysicsEnginePlayMode::detectInvaderCollisions(std::vector<GameObject>& obj
 	auto invaderEnd = objects.end();
 	for (invaderIt; invaderIt != invaderEnd; ++invaderIt)
 	{
-		if ((*invaderIt).isActive() && (*invaderIt).getTag() == "invader")
+		if (!(*invaderIt).isActive() || (*invaderIt).getTag() != "invader")
 		{
-			auto bulletIt = objects.begin();
-			// Jump to the first bullet
-			advance(bulletIt, bulletPositions[0]);
-			auto bulletEnd = objects.end();
-			for (bulletIt; bulletIt != bulletEnd; ++bulletIt)
+			continue;
+		}
+
+		auto bulletIt = objects.begin();
+
+		// Jump to the first bullet
+		advance(bulletIt, bulletPositions[0]);
+		auto bulletEnd = objects.end();
+		for (bulletIt; bulletIt != bulletEnd; ++bulletIt)
+		{
+			bool bulletBelongsToPlayer = (*bulletIt).getTag() == "bullet" && std::static_pointer_cast<BulletUpdateComponent>((*bulletIt).getFirstUpdateComponent())->m_BelongsToPlayer;
+			if (!bulletBelongsToPlayer)
 			{
-				if ((*invaderIt).getEncompassingRectCollider().intersects((*bulletIt).getEncompassingRectCollider()) && (*bulletIt).getTag() == "bullet" && std::static_pointer_cast<BulletUpdateComponent>((*bulletIt).getFirstUpdateComponent())->m_BelongsToPlayer)
-				{
-					SoundEngine::playInvaderExplode();
+				continue;
+			}
 
-					(*invaderIt).getTransformComponent()->getLocation() = offScreen;
+			FloatRect innvaderRect = (*invaderIt).getEncompassingRectCollider();
+			FloatRect bulletRect = (*bulletIt).getEncompassingRectCollider();
 
-					(*bulletIt).getTransformComponent()->getLocation() = offScreen;
+			bool bulletHittingInvader = innvaderRect.intersects(bulletRect);
 
-					WorldState::SCORE++;
+			if (bulletHittingInvader)
+			{
+				SoundEngine::playInvaderExplode();
 
-					WorldState::NUM_INVADERS--;
+				(*invaderIt).getTransformComponent()->getLocation() = offScreen;
 
-					(*invaderIt).setInactive();
-				}
+				(*bulletIt).getTransformComponent()->getLocation() = offScreen;
+
+				WorldState::SCORE++;
+
+				WorldState::NUM_INVADERS--;
+
+				(*invaderIt).setInactive();
 			}
 		}
 	}
@@ -66,7 +82,7 @@ void PhysicsEnginePlayMode::detectPlayerCollisionsAndInvaderDirection(std::vecto
 			// with the player
 			if (currentCollider.intersects(playerCollider))
 			{
-				if ((*it3).getTag() == "bullet")
+				if ((*it3).getTag() == "bullet" && !std::static_pointer_cast<BulletUpdateComponent>((*it3).getFirstUpdateComponent())->m_BelongsToPlayer)
 				{
 					SoundEngine::playPlayerExplode();
 

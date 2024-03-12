@@ -8,6 +8,7 @@
 #include <iostream>
 #include "ShaderManager.h"
 #include "BitmapStore.h"
+#include "WorldState.h"
 
 void GameObjectFactoryPlayMode::buildGameObject(GameObjectBlueprint& bp, std::vector<GameObject>& gameObjects)
 {
@@ -21,7 +22,7 @@ void GameObjectFactoryPlayMode::buildGameObject(GameObjectBlueprint& bp, std::ve
 	{
 		if (*it == "Transform")
 		{
-			gameObject.addComponent(std::make_shared<TransformComponent>(bp.getWidth(), bp.getHeight(), Vector2f(bp.getLocationX() * 50, bp.getLocationY() * 50)));
+			gameObject.addComponent(std::make_shared<TransformComponent>(bp.getWidth(), bp.getHeight(), Vector2f(bp.getLocationX(), bp.getLocationY())));
 		}
 		else if (*it == "Player Update")
 		{

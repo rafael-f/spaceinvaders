@@ -4,6 +4,7 @@
 #include "Vector2f.h"
 #include"ShaderManager.h"
 
+// Used to draw a textureless quad
 class RectangleShape : public Drawable
 {
 public:
@@ -19,7 +20,6 @@ public:
 
 	Vector2f getSize();
 
-	// Inherited via Drawable
 	void Draw() override;
 
 private:

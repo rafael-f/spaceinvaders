@@ -31,8 +31,10 @@ RenderWindow::RenderWindow()
 		std::exit(-1);
 	}
 
+	// windowed maximized
 	glfwMaximizeWindow(m_Window);
 
+	// for fullscreen
 	//glfwSetWindowMonitor(m_Window, glfwGetPrimaryMonitor(), 0, 0, m_Resolution.x, m_Resolution.y, GLFW_DONT_CARE);
 
 	glfwMakeContextCurrent(m_Window);
@@ -68,9 +70,9 @@ RenderWindow::RenderWindow()
 	int windowX, windowY;
 	glfwGetWindowPos(m_Window, &windowX, &windowY);
 
+	// todo, fix the code to properly consider the viewport with the windows title bar
 	//int windowWidth, windowHeight;
 	//glfwGetWindowSize(window, &windowWidth, &windowHeight);
-
 	glViewport(-windowX, -windowY, m_Resolution.x, m_Resolution.y); // todo ?
 
 	GLCall(glEnable(GL_BLEND));
@@ -84,7 +86,7 @@ void RenderWindow::draw(Drawable* drawable)
 
 Vector2f RenderWindow::mapPixelToCoords(Vector2i pixel)
 {
-	return Vector2f(pixel.x, pixel.y); // todo
+	return Vector2f(pixel.x, pixel.y); // todo, must consider the viewport and translate the pixels to the viewport, see mouse_button_callback
 }
 
 bool RenderWindow::pollEvent(Event& event)
@@ -134,6 +136,8 @@ void RenderWindow::mouse_button_callback(GLFWwindow* window, int button, int act
 
 		glfwGetCursorPos(window, &xpos, &ypos);
 
+		// todo, must consider the viewport and translate the pixels to the viewport
+		// see mapPixelToCoords
 		//int windowWidth, windowHeight;
 		//glfwGetWindowSize(window, &windowWidth, &windowHeight);
 

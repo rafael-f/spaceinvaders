@@ -6,10 +6,8 @@
 
 void Font::loadFromFile(std::string file, unsigned int fontSize)
 {
-    // first clear the previously loaded Characters
     this->Characters.clear();
 
-    // then initialize and load the FreeType library
     FT_Library ft;
 
     // all functions return a value different than 0 whenever an error occurred

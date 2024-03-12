@@ -5,7 +5,6 @@
 #include "GameScreen.h"
 #include "GameUIPanel.h"
 #include "InvaderUpdateComponent.h"
-#include "VideoMode.h"
 #include "WorldState.h"
 
 class BulletSpawner;
@@ -15,7 +14,7 @@ int WorldState::WORLD_HEIGHT;
 int WorldState::NUM_INVADERS;
 int WorldState::NUM_INVADERS_AT_START;
 
-GameScreen::GameScreen(ScreenManagerRemoteControl* smrc, Vector2i res, Sprite backgroundSprite)
+GameScreen::GameScreen(ScreenManagerRemoteControl* smrc, Vector2i res, const Sprite& backgroundSprite)
 	:m_ScreenManagerRemoteControl(smrc), m_BackgroundSprite(backgroundSprite)
 {
 	m_GIH = std::make_shared<GameInputHandler>();
@@ -30,12 +29,8 @@ GameScreen::GameScreen(ScreenManagerRemoteControl* smrc, Vector2i res, Sprite ba
 
 	addPanel(std::move(gouip), smrc, m_GOIH);
 
-	float screenRatio = static_cast<float>(VideoMode::getDesktopWidth()) / static_cast<float>(VideoMode::getDesktopHeight());
-
 	WorldState::WORLD_WIDTH = res.x;
 	WorldState::WORLD_HEIGHT = res.y;
-
-	auto textureSize = m_BackgroundSprite.getTexture()->getSize();
 
 	m_BackgroundSprite.setSize(static_cast<float>(res.x), static_cast<float>(res.y));
 }

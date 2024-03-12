@@ -265,9 +265,6 @@
     <ClInclude Include="Time.h">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClInclude>
-    <ClInclude Include="VideoMode.h">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderManager.h">
       <Filter>Source Files\Engine\Renderer</Filter>
     </ClInclude>
@@ -436,9 +433,6 @@
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
     <ClCompile Include="Time.cpp">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClCompile>
-    <ClCompile Include="VIdeoMode.cpp">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
     <ClCompile Include="ShaderManager.cpp">
