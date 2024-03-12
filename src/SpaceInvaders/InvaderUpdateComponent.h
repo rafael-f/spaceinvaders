@@ -19,7 +19,7 @@ private:
 
 	BulletSpawner* m_BulletSpawner;
 
-	float m_Speed = 10.0f;
+	float m_Speed = 150.0f;
 	bool m_MovingRight = true;
 	float m_TimeSinceLastShot;
 	float m_TimeBetweenShots = 5.0f;

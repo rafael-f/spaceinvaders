@@ -165,32 +165,40 @@ void RenderWindow::framebufferSizeCallback(GLFWwindow* window, int width, int he
 
 void RenderWindow::key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
+	Event event;
+
 	if (action == GLFW_PRESS)
 	{
-		Event event;
 		event.type = Event::KeyPressed;
-		if (key == GLFW_KEY_ESCAPE)
-		{
-			event.key.code = Keyboard::Escape;
-		}
-
-		m_Events.push(event);
+	}
+	else if(action == GLFW_RELEASE)
+	{
+		event.type = Event::KeyReleased;
 	}
 
-	// when a user presses the escape key, we set the WindowShouldClose property to true, closing the application
-	/*if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	switch (key)
 	{
-		glfwSetWindowShouldClose(window, true);
+	case GLFW_KEY_ESCAPE:
+		event.key.code = Keyboard::Escape;
+		break;
+	case GLFW_KEY_LEFT:
+		event.key.code = Keyboard::Left;
+		break;
+	case GLFW_KEY_RIGHT:
+		event.key.code = Keyboard::Right;
+		break;
+	case GLFW_KEY_UP:
+		event.key.code = Keyboard::Up;
+		break;
+	case GLFW_KEY_DOWN:
+		event.key.code = Keyboard::Down;
+		break;
+	case GLFW_KEY_SPACE:
+		event.key.code = Keyboard::Space;
+		break;
+	default:
+		return;
 	}
 
-	if (key >= 0 && key < 1024)
-	{
-		if (action == GLFW_PRESS)
-			Breakout.Keys[key] = true;
-		else if (action == GLFW_RELEASE)
-		{
-			Breakout.Keys[key] = false;
-			Breakout.KeysProcessed[key] = false;
-		}
-	}*/
+	m_Events.push(event);
 }

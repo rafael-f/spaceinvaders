@@ -2,10 +2,10 @@
 
 int VideoMode::getDesktopWidth()
 {
-    return 0;
+    return 100;
 }
 
 int VideoMode::getDesktopHeight()
 {
-    return 0;
+    return 100;
 }

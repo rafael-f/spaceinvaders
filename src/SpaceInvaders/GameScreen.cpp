@@ -7,10 +7,10 @@
 #include "InvaderUpdateComponent.h"
 #include "VideoMode.h"
 #include "WorldState.h"
-#include "WorldState.h"
 
 class BulletSpawner;
 
+int WorldState::WORLD_WIDTH;
 int WorldState::WORLD_HEIGHT;
 int WorldState::NUM_INVADERS;
 int WorldState::NUM_INVADERS_AT_START;
@@ -32,15 +32,21 @@ GameScreen::GameScreen(ScreenManagerRemoteControl* smrc, Vector2i res, Sprite ba
 
 	float screenRatio = static_cast<float>(VideoMode::getDesktopWidth()) / static_cast<float>(VideoMode::getDesktopHeight());
 
-	WorldState::WORLD_HEIGHT = static_cast<int>(WorldState::WORLD_WIDTH / screenRatio);
+	WorldState::WORLD_WIDTH = res.x;
+	WorldState::WORLD_HEIGHT = res.y;//static_cast<int>(WorldState::WORLD_WIDTH / screenRatio);
 
-	m_View.setSize(WorldState::WORLD_WIDTH, static_cast<float>(WorldState::WORLD_HEIGHT));
-	m_View.setCenter(Vector2f(WorldState::WORLD_WIDTH / 2, static_cast<float>(WorldState::WORLD_HEIGHT / 2)));
+	//m_View.setSize(WorldState::WORLD_WIDTH, static_cast<float>(WorldState::WORLD_HEIGHT));
+	//m_View.setCenter(Vector2f(WorldState::WORLD_WIDTH / 2, static_cast<float>(WorldState::WORLD_HEIGHT / 2)));
+
+	m_View.setSize(static_cast<float>(res.x), static_cast<float>(res.y));
+	m_View.setCenter(static_cast<float>(res.x / 2), static_cast<float>(res.y / 2));
 
 	auto textureSize = m_BackgroundSprite.getTexture()->getSize();
 
-	m_BackgroundSprite.setScale(float(m_View.getSize().x) / static_cast<float>(textureSize.x), float(m_View.getSize().y) / static_cast<float>(textureSize.y));
+	//m_BackgroundSprite.setScale(float(m_View.getSize().x) / static_cast<float>(textureSize.x), float(m_View.getSize().y) / static_cast<float>(textureSize.y));
 	m_BackgroundSprite.setSize(m_View.getSize().x, m_View.getSize().y);
+
+	m_BackgroundSprite.setScale(float(m_View.getSize().x) / static_cast<float>(textureSize.x), float(m_View.getSize().y) / static_cast<float>(textureSize.y));
 }
 
 void GameScreen::initialise()

@@ -21,7 +21,7 @@ void GameObjectFactoryPlayMode::buildGameObject(GameObjectBlueprint& bp, std::ve
 	{
 		if (*it == "Transform")
 		{
-			gameObject.addComponent(std::make_shared<TransformComponent>(bp.getWidth(), bp.getHeight(), Vector2f(bp.getLocationX(), bp.getLocationY())));
+			gameObject.addComponent(std::make_shared<TransformComponent>(bp.getWidth(), bp.getHeight(), Vector2f(bp.getLocationX() * 50, bp.getLocationY() * 50)));
 		}
 		else if (*it == "Player Update")
 		{

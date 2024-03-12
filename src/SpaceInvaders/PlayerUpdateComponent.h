@@ -11,7 +11,7 @@ private:
 	std::string m_SpecificType = "player";
 	std::shared_ptr<TransformComponent> m_TC;
 	std::shared_ptr<RectColliderComponent> m_RCC;
-	float m_Speed = 50.0f;
+	float m_Speed = 500.0f;
 	float m_XExtent = 0;
 	float m_YExtent = 0;
 	bool m_IsHoldingLeft = false;

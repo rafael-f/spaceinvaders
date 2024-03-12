@@ -11,7 +11,7 @@ private:
 	std::string m_SpecificType = "bullet";
 	std::shared_ptr<TransformComponent> m_TC;
 	std::shared_ptr<RectColliderComponent> m_RCC;
-	float m_Speed = 75.0f;
+	float m_Speed = 750.0f;
 
 	int m_AlienBulletSpeedModifier;
 	int m_ModifierRandomComponent = 5;
