@@ -9,35 +9,26 @@ SoundEngine::SoundEngine()
 
 	m_s_Instance = this;
 
-	// Load the sound into the buffers
-	m_ShootBuffer.loadFromFile("sound/shoot.ogg");
-	m_PlayerExplodeBuffer.loadFromFile("sound/playerexplode.ogg");
-	m_InvaderExplodeBuffer.loadFromFile("sound/invaderexplode.ogg");
-	m_ClickBuffer.loadFromFile("sound/click.ogg");
-
-	// Associate the sounds with the buffers
-	m_ShootSound.setBuffer(m_ShootBuffer);
-	m_PlayerExplodeSound.setBuffer(m_PlayerExplodeBuffer);
-	m_InvaderExplodeSound.setBuffer(m_InvaderExplodeBuffer);
-	m_ClickSound.setBuffer(m_ClickBuffer);
+	irrklangEngine = irrklang::createIrrKlangDevice();
+	irrklangEngine->setSoundVolume(0.15f);
 }
 
 void SoundEngine::playShoot()
 {
-	m_s_Instance->m_ShootSound.play();
+	m_s_Instance->irrklangEngine->play2D("sound/shoot.ogg", false);
 }
 
 void SoundEngine::playPlayerExplode()
 {
-	m_s_Instance->m_PlayerExplodeSound.play();
+	m_s_Instance->irrklangEngine->play2D("sound/playerexplode.ogg", false);
 }
 
 void SoundEngine::playInvaderExplode()
 {
-	m_s_Instance->m_InvaderExplodeSound.play();
+	m_s_Instance->irrklangEngine->play2D("sound/invaderexplode.ogg", false);
 }
 
 void SoundEngine::playClick()
 {
-	m_s_Instance->m_ClickSound.play();
+	m_s_Instance->irrklangEngine->play2D("sound/click.ogg", false);
 }

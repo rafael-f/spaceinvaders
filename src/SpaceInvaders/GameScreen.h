@@ -7,6 +7,7 @@
 #include "Screen.h"
 #include "Sprite.h"
 #include "Time.h"
+#include "SoundEngine.h"
 
 class GameScreen : public Screen, public BulletSpawner
 {
@@ -55,6 +56,7 @@ public:
 				m_PlayerBulletSpawnLocation.y = spawnLocation.y;
 				m_WaitingToSpawnBulletForPlayer = true;
 				m_BulletClock.restart();
+				SoundEngine::playShoot();
 			}
 		}
 		else

@@ -244,12 +244,6 @@
     <ClInclude Include="Joystick.h">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClInclude>
-    <ClInclude Include="SoundBuffer.h">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClInclude>
@@ -430,12 +424,6 @@
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
     <ClCompile Include="Joystick.cpp">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundBuffer.cpp">
-      <Filter>Source Files\Engine\stubs</Filter>
-    </ClCompile>
-    <ClCompile Include="Sound.cpp">
       <Filter>Source Files\Engine\stubs</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
